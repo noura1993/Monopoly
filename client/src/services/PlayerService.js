@@ -20,6 +20,7 @@ export default {
                 'Content-Type': 'application/json'
             }
         })
+            .then(res => res.json())
     },
 
     updatePlayer(player) {
@@ -30,5 +31,13 @@ export default {
                 'Content-Type': 'application/json'
             }
         })
+            .then(res => res.json());
+    },
+
+    deletePlayer(id) {
+        return fetch(basePlayersURL + id, {
+            method: 'DELETE',
+        })
+            // .then(res => res.json());
     }
 }
