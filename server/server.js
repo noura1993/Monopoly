@@ -18,8 +18,11 @@ MongoClient.connect(databaseURL)
     .then((client) => {
         const db = client.db('propertys');
         const propertiesCollection = db.collection('properties');
+        const playersCollection = db.collection('players');
         const propertiesRouter = createRouter(propertiesCollection);
+        const playersRouter = createRouter(playersCollection);
         app.use('/api/properties', propertiesRouter);
+        app.use('/api/players', playersRouter);
     })
     .catch(console.error);
 
