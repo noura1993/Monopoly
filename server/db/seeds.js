@@ -183,3 +183,5 @@ db.properties.insertMany([
         "rent_value": 5
     }
 ]);
+
+db.createCollection("players")
