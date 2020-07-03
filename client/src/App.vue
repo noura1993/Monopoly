@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    
   </div>
 </template>
 
@@ -14,5 +15,16 @@ export default {
 </script>
 
 <style>
+html {
+  height: 100%;
+}
+
+body {
+  background: url('./assets/monopoly.jpg') no-repeat;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 </style>

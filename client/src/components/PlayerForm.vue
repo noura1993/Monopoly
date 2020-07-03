@@ -1,5 +1,5 @@
 <template lang="html">
-<form v-on:submit.prevent="handleSubmit"
+<form v-on:submit.prevent="handleSubmit">
     <h1>Add a player</h1>
     <label for="name">Player Name:</label>
     <input type="text" id="name" name="name" v-model="name" required/>
@@ -20,7 +20,10 @@ export default {
   data() {
     return {
       name: '',
-      colour: ''
+      colour: '',
+      wallet: 1500,
+      position: 0,
+      dice: null
     };
   },
   methods: {

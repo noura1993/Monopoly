@@ -1,7 +1,7 @@
 use propertys;
 db.dropDatabase()
 
-db.propertys.insertMany([
+db.properties.insertMany([
     {
         "name": "Ahmed Station",
         "value": 50,
