@@ -23,27 +23,27 @@ db.propertys.insertMany([
         "rent_value": 5
     },
     {
-        "name": "Ollies Street",
+        "name": "Ollie Street",
         "value": 50,
         "rent_value": 10
     },
     {
-        "name": "Keiths Street",
+        "name": "Keith Street",
         "value": 50,
         "rent_value": 10
     },    
     {
-        "name": "Saras Street",
+        "name": "Sara Street",
         "value": 50,
         "rent_value": 10
     },    
     {
-        "name": "Eds Street",
+        "name": "Ed Street",
         "value": 50,
         "rent_value": 10
     },
     {
-        "name": "Adams Street",
+        "name": "Adam Street",
         "value": 50,
         "rent_value": 10
     },
@@ -58,24 +58,24 @@ db.propertys.insertMany([
         "rent_value": 50
     },
     {
-        "name": "Rumens Street",
+        "name": "Rumen Street",
         "value": 50,
         "rent_value": 10
     },
     {
-        "name": "Craigs Street",
+        "name": "Craig Street",
         "value": 50,
         "rent_value": 10
     },
     {
-        "name": "Johns Street",
+        "name": "Johns Nice Street",
         "value": 50,
         "rent value": 5
     },
     {
-        "name": "Louises Street",
+        "name": "Louise Believes In You",
         "value": 50,
-        "rent_value": 5
+        "rent_value": 0
     },
     {
         "name": "Free Parking",
@@ -83,22 +83,22 @@ db.propertys.insertMany([
         "rent_value": 0
     },
     {
-        "name": "Harrisons Street",
+        "name": "Harrison Folks Street",
         "value": 50,
         "rent_value": 5
     },
     {
-        "name": "Maris Street",
+        "name": "Mari Street",
         "value": 50,
         "rent_value": 5
     },
     {
-        "name": "Janeys Street",
+        "name": "Janey Street",
         "value": 50,
         "rent_value": 5
     },
     {
-        "name": "Eugenes Street",
+        "name": "Eugene Street",
         "value": 50,
         "rent_value": 5
     },
@@ -118,9 +118,9 @@ db.propertys.insertMany([
         "rent_value": 5
     },
     {
-        "name": "Constitution Street",
-        "value": 50,
-        "rent_value": 5
+        "name": "Go to Jail",
+        "value": 0,
+        "rent_value": 0
     },
     {
         "name": "Princes Street",
@@ -143,12 +143,12 @@ db.propertys.insertMany([
         "rent_value": 5
     },
     {
-        "name": "Waverly Station",
+        "name": "Waverley",
         "value": 50,
         "rent_value": 5
     },
     {
-        "name": "Haymarket Station",
+        "name": "Haymarket",
         "value": 50,
         "rent_value": 5
     },
@@ -173,7 +173,7 @@ db.propertys.insertMany([
         "rent_value": 5
     },
     {
-        "name": "Vue Station",
+        "name": "Vue Lane",
         "value": 50,
         "rent_value": 5
     },
@@ -181,11 +181,5 @@ db.propertys.insertMany([
         "name": "JavaScript Hill",
         "value": 50,
         "rent_value": 5
-    },
-    {
-        "name": "Vue Station",
-        "value": 50,
-        "rent_value": 5
     }
-
-])
+]);
