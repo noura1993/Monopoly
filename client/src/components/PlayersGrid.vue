@@ -33,7 +33,7 @@ export default {
                 player.properties.push(this.property)
             }
             else {
-                alert('You do not have enough funds in your wallet')
+                alert(`${player.name}: You don't have enough funds for ${this.property.name}`)
             }
             PlayerService.updatePlayer(player)
         },
