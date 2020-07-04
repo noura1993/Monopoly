@@ -2,7 +2,7 @@
 <form v-on:submit.prevent="handleSubmit">
     <h1>Add a player</h1>
     <label for="name">Player Name:</label>
-    <input type="text" id="name" name="name" v-model="name" required/>
+    <input type="text" id="name" v-model="name" required/>
 
     <label for="colour">Colour:</label>
     <select name="colour-field" id="colour" v-model="colour">
@@ -24,8 +24,8 @@ export default {
   name: 'player-form',
   data() {
     return {
-      name: '',
-      colour: '',
+      name: "",
+      colour: "",
       wallet: 1500,
       position: 0,
       dice: null
@@ -33,6 +33,13 @@ export default {
   },
   methods: {
     handleSubmit() {
+        // const newPlayer = {
+        //     name: this.name,
+        //     colour: this.colour,
+        //     wallet: this.wallet,
+        //     position: this.position,
+        //     dice: this.dice
+        // }
       eventBus.$emit('submit-player', this.$data);
       this.name = this.colour = '';
     }
