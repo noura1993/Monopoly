@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import PlayersGrid from "./components/PlayersGrid"
 import PlayerForm from "./components/PlayerForm"
 import BoardGrid from "./components/BoardGrid";
 
@@ -12,7 +13,8 @@ export default {
   name: 'App',
   components: {
     "board-grid": BoardGrid,
-    "player-form": PlayerForm
+    "player-form": PlayerForm,
+    "player-grid": PlayersGrid
   }
 }
 </script>
