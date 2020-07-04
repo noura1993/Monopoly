@@ -19,6 +19,8 @@
             <select id="player-selling-property-select" v-model="propertySell">
                 <option v-for="(property, index) in player.properties" :value="property" :key="index">{{property.name}}</option>
             </select>
+            <label for="property-sell-value">Sale value (£)</label>
+            <input type="number" id="property-sale-value" v-model.number="propertySaleValue">
             <button v-if="propertySell && playerToSellTo" v-on:click="sellProperty(player)">Sell {{propertySell.name}} this to {{playerToSellTo.name}}</button>
         </div>
 	</div>
@@ -36,7 +38,8 @@ export default {
         return {
             propertyBuy: null,
             propertySell: null,
-            playerToSellTo: null
+            playerToSellTo: null,
+            propertySaleValue: null
         }
     },
     methods: {
@@ -74,10 +77,12 @@ export default {
 
         sellProperty: function (playerSelling) {
             // console.log(playerSelling)
+            //This $emit is picked up in App.vue
             eventBus.$emit('player-sells-property-update', {
                 'playerSelling': playerSelling, 
                 'playerToSellTo': this.playerToSellTo,
-                'property': this.propertySell
+                'property': this.propertySell,
+                'saleValue': this.propertySaleValue
             })
         },
 

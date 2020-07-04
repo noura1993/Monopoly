@@ -31,8 +31,14 @@ export default {
     this.addPlayerToPlayerList();
     this.getFullListOfProperties();
     this.playerBuysProperty();
+    this.playerSellsProperty();
   },
   methods: {
+    getPlayers: function () {
+      PlayerService.getPlayers()
+        .then((players) => this.players = players)
+    },
+
     addPlayerToPlayerList: function () {
       eventBus.$on('submit-player', (player) => {
       PlayerService.addPlayer(player)
@@ -59,10 +65,32 @@ export default {
         eventBusObject.player.properties.push(eventBusObject.property);
 
         PlayerService.updatePlayer(eventBusObject.player)
-          .then(() => {
-            PlayerService.getPlayers()
-              .then((players) => this.players = players)
-          })
+          // .then(() => {
+          //   PlayerService.getPlayers()
+          //     .then((players) => this.players = players)
+          // })
+      })
+    },
+
+    playerSellsProperty: function () {
+      //$emit event for this in in PlayersGrid.vue
+      eventBus.$on('player-sells-property-update', (eventBusObject) => {
+        //Player selling adding sale value to wallet, removing property from their list
+        //and updating their database info
+        eventBusObject.playerSelling.wallet += eventBusObject.saleValue;
+        const index = eventBusObject.playerSelling.properties.findIndex((property) => property._id === eventBusObject.property._id);
+        eventBusObject.playerSelling.properties.splice(index, 1);
+        PlayerService.updatePlayer(eventBusObject.playerSelling);
+
+        //Player buying deducting sale value from wallet, adding property to their list
+        //and updating their database info
+        eventBusObject.playerToSellTo.wallet -= eventBusObject.saleValue;
+        eventBusObject.playerToSellTo.properties.push(eventBusObject.property);
+        PlayerService.updatePlayer(eventBusObject.playerToSellTo)
+          // .then(() => {
+          //   PlayerService.getPlayers()
+          //     .then((players) => this.players = players)
+          // })
       })
     }
   }
