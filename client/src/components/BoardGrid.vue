@@ -22,7 +22,7 @@
     </div>
     <div class="center"></div>
     <div class="column right-column">
-        <div class="property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+        <div class="right-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
           <div class="property-color">Color</div>
           <div class="property-name">Name</div>
           <div class="property-price">Price</div>
@@ -124,6 +124,12 @@ export default {};
     height: 160px;
     width: 120px;
     transform: translate(16%, -12%) rotate(90deg);
+}
+
+.right-property {
+    height: 160px;
+    width: 120px;
+    transform: translate(16%, -12%) rotate(-90deg);
 }
 
 .corner {
