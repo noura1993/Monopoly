@@ -184,4 +184,4 @@ db.properties.insertMany([
     }
 ]);
 
-db.createCollection("players")
+db.createCollection("players");
