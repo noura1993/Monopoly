@@ -87,10 +87,6 @@ export default {
         eventBusObject.playerToSellTo.wallet -= eventBusObject.saleValue;
         eventBusObject.playerToSellTo.properties.push(eventBusObject.property);
         PlayerService.updatePlayer(eventBusObject.playerToSellTo)
-          // .then(() => {
-          //   PlayerService.getPlayers()
-          //     .then((players) => this.players = players)
-          // })
       })
     }
   }
