@@ -27,6 +27,7 @@ export default {
       name: "",
       colour: "",
       wallet: 1500,
+      properties: [],
       position: 0,
       dice: null
     };

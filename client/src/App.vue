@@ -1,11 +1,8 @@
 <template>
   <div id="app">
     <player-form></player-form>
-    <players-grid :players="players"></players-grid>
+    <players-grid :players="players" :properties="properties"></players-grid>
     <board-grid :properties="properties"/>
-    <ul>
-      <li v-for="(property, index) in properties" :key="index">{{property}}</li>
-    </ul>
   </div>
 </template>
 
