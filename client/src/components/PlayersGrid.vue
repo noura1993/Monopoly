@@ -6,14 +6,17 @@
         <ul v-if="player.properties">
             <li v-for="(property, index) in player.properties" :key="index">{{property.name}}</li>
         </ul>
-        <label for="player-chooses-property">Choose a property below</label>
+        <label for="player-chooses-property">Choose a property to buy below</label>
         <select id="player-chooses-property" v-model="propertyBuy">
             <option v-for="(property, index) in properties" :value="property" :key="index">{{property.name}}</option>
         </select>
         <button v-on:click="buyProperty(player)">Buy Property</button>
-        <select id="players-sells-property" v-model="playerToSellTo">
-            <option v-for="(player, index) in players" :value="player" :key="player._id">{{player.name}}</option>
-        </select>
+        <div v-if="player.properties" id="container-for-selling-properties">
+            <p>You can sell a property to another player below.</p>
+            <select id="players-sells-property" v-model="playerToSellTo">
+                <option v-for="(player, index) in players" :value="player" :key="player._id">{{player.name}}</option>
+            </select>
+        </div>
 	</div>
 </div>
 </template>
@@ -34,16 +37,30 @@ export default {
     },
     methods: {
         buyProperty: function (player) {
+            //checking if the player has enough funds for the property
             if (player.wallet < this.propertyBuy.value) {
                 alert(`${player.name}: You don't have enough funds for ${this.propertyBuy.name}.`);
                 return;
             }
+            //checking if the player already owns the property
             let exitCondition = null;
             player.properties.forEach((property) => {
                 if (property._id === this.propertyBuy._id) {
                     alert(`${player.name}: You already have ${this.propertyBuy.name} purchased.`);
                     exitCondition = true;
                 }
+            })
+            if (exitCondition) { return; }
+
+            //checking if another player already owns the property
+            this.players.forEach((player) => {
+                //NOTE: player name needs more work - it gets stuck on the same name sometimes
+                player.properties.forEach((playerProperty) => {
+                    if (playerProperty._id === this.propertyBuy._id) {
+                        alert(`${player.name}: Sorry, ${playerProperty.name} is already owned by ${player}`)
+                        exitCondition = true;
+                    }
+                })
             })
             if (exitCondition) { return; }
 
