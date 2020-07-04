@@ -57,7 +57,11 @@ export default {
         eventBusObject.player.wallet -= eventBusObject.property.value;
         eventBusObject.player.properties.push(eventBusObject.property);
 
-        PlayerService.updatePlayer(eventBusObject.player);
+        PlayerService.updatePlayer(eventBusObject.player)
+          .then(() => {
+            PlayerService.getPlayers()
+              .then((players) => this.players = players)
+          })
       })
     }
   }

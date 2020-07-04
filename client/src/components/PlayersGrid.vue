@@ -1,9 +1,9 @@
 <template lang="html">
 <div>
-	<div v-for="(player, index) in players" :key="index" :class="playerClass(index)">
+	<div v-for="(player, index) in players" :key="player._id" :class="playerClass(index)">
         <p>Player name: {{player.name}}</p>
         <p>Wallet: {{player.wallet}}</p>
-        <ul v-if="player.properties.length">
+        <ul v-if="player.properties">
             <li v-for="(property, index) in player.properties" :key="index">{{property.name}}</li>
         </ul>
         <label for="player-chooses-property">Choose a property below</label>
