@@ -11,11 +11,15 @@
             <option v-for="(property, index) in properties" :value="property" :key="index">{{property.name}}</option>
         </select>
         <button v-on:click="buyProperty(player)">Buy Property</button>
-        <div v-if="player.properties" id="container-for-selling-properties">
-            <p>You can sell a property to another player below.</p>
-            <select id="players-sells-property" v-model="playerToSellTo">
+        <div v-if="player.properties.length > 0" id="container-for-selling-properties">
+            <p>You can choose a property and sell it to another player below.</p>
+            <select id="player-selling-buyer-select" v-model="playerToSellTo">
                 <option v-for="(player, index) in players" :value="player" :key="player._id">{{player.name}}</option>
             </select>
+            <select id="player-selling-property-select" v-model="propertySell">
+                <option v-for="(property, index) in player.properties" :value="property" :key="index">{{property.name}}</option>
+            </select>
+            <button v-if="propertySell && playerToSellTo" v-on:click="sellProperty">Sell {{propertySell.name}} this to {{playerToSellTo.name}}</button>
         </div>
 	</div>
 </div>
@@ -66,6 +70,10 @@ export default {
 
             //$on event for this is in App.vue
             eventBus.$emit('player-buys-property-update', {'player': player, 'property': this.propertyBuy})
+        },
+
+        sellProperty: function () {
+
         },
 
         playerClass: function (playerIndex) {
