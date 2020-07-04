@@ -17,9 +17,9 @@ export default {
     name: 'player-info',
     props: ['players'],
     computed: {
-    colourClass() {
-      return this.player.colour ? 'red' : 'green';
-      }
+        colourClass() {
+            return this.player.colour ? 'red' : 'green';
+        }
     },
     methods: {
         deletePlayer: function() {

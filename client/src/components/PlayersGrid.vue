@@ -1,6 +1,9 @@
 <template lang="html">
 	<div id="playersGrid">
-		<player v-for="player, index in players" :key="index" :player="player" />
+		<!-- <player v-for="(player, index) in players" :key="index" :player="player" /> -->
+        <ul>
+            <li v-for="(player, index) in players" :key="index">{{player}}</li>
+        </ul>
 	</div>
 </template>
 
@@ -8,11 +11,11 @@
 import Player from './PlayerInfo';
 
 export default {
-  name: 'players-grid',
-  components: {
-		'player': Player
-	},
-	props: ['players']
+    name: 'players-grid',
+    // components: {
+    //     'player': Player
+    // },
+    props: ['players']
 }
 </script>
 

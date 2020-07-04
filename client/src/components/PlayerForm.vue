@@ -9,7 +9,7 @@
         <option value="green">Green</option>
         <option value="blue">Blue</option>
         <option value="red">Red</option>
-        <option value="yellow">Purple</option>
+        <option value="yellow">Yellow</option>
     </select>
 
     <input type="submit" name="submit" value="Save" />
@@ -33,13 +33,6 @@ export default {
   },
   methods: {
     handleSubmit() {
-        // const newPlayer = {
-        //     name: this.name,
-        //     colour: this.colour,
-        //     wallet: this.wallet,
-        //     position: this.position,
-        //     dice: this.dice
-        // }
       eventBus.$emit('submit-player', this.$data);
       this.name = this.colour = '';
     }
