@@ -14,7 +14,7 @@
       <div class="corner-container">Go To Jail</div>
     </div>
     <div class="column left-column">
-        <div class="property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+        <div class="left-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
           <div class="property-color">Color</div>
           <div class="property-name">Name</div>
           <div class="property-price">Price</div>
@@ -118,6 +118,12 @@ export default {};
 
 .property-container {
     background: white;
+}
+
+.left-property {
+    height: 160px;
+    width: 120px;
+    transform: translate(16%, -12%) rotate(90deg);
 }
 
 .corner {
