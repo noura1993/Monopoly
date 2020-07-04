@@ -19,7 +19,7 @@
             <select id="player-selling-property-select" v-model="propertySell">
                 <option v-for="(property, index) in player.properties" :value="property" :key="index">{{property.name}}</option>
             </select>
-            <button v-if="propertySell && playerToSellTo" v-on:click="sellProperty">Sell {{propertySell.name}} this to {{playerToSellTo.name}}</button>
+            <button v-if="propertySell && playerToSellTo" v-on:click="sellProperty(player)">Sell {{propertySell.name}} this to {{playerToSellTo.name}}</button>
         </div>
 	</div>
 </div>
@@ -72,8 +72,13 @@ export default {
             eventBus.$emit('player-buys-property-update', {'player': player, 'property': this.propertyBuy})
         },
 
-        sellProperty: function () {
-
+        sellProperty: function (playerSelling) {
+            // console.log(playerSelling)
+            eventBus.$emit('player-sells-property-update', {
+                'playerSelling': playerSelling, 
+                'playerToSellTo': this.playerToSellTo,
+                'property': this.propertySell
+            })
         },
 
         playerClass: function (playerIndex) {
