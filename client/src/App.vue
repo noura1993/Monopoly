@@ -30,6 +30,7 @@ export default {
   mounted() {
     this.addPlayerToPlayerList();
     this.getFullListOfProperties();
+    this.playerBuysProperty();
   },
   methods: {
     addPlayerToPlayerList: function () {
@@ -49,6 +50,15 @@ export default {
     getFullListOfProperties: function () {
       PlayerService.getProperties()
         .then((properties) => this.properties = properties);
+    },
+
+    playerBuysProperty: function () {
+      eventBus.$on('player-buys-property-update', (eventBusObject) => {
+        eventBusObject.player.wallet -= eventBusObject.property.value;
+        eventBusObject.player.properties.push(eventBusObject.property);
+
+        PlayerService.updatePlayer(eventBusObject.player);
+      })
     }
   }
 }

@@ -3,6 +3,9 @@
 	<div v-for="(player, index) in players" :key="index" :class="playerClass(index)">
         <p>Player name: {{player.name}}</p>
         <p>Wallet: {{player.wallet}}</p>
+        <ul v-if="player.properties.length">
+            <li v-for="(property, index) in player.properties" :key="index">{{property.name}}</li>
+        </ul>
         <label for="player-chooses-property">Choose a property below</label>
         <select id="player-chooses-property" v-on:change="buyProperty(player)" v-model="property">
             <option v-for="(property, index) in properties" :value="property" :key="index">{{property.name}}</option>
@@ -20,22 +23,16 @@ export default {
     name: 'players-grid',
     data() {
         return {
-            property: null,
-            player: null
+            property: null
         }
     },
     methods: {
         buyProperty: function (player) {
-            const propertyValue = this.property.value;
-            const playerId = player._id;
-            if (player.wallet > this.property.value) {
-                player.wallet -= this.property.value;
-                player.properties.push(this.property)
+            if (player.wallet < this.property.value) {
+                alert(`${player.name}: You don't have enough funds for ${this.property.name}`);
+                return;
             }
-            else {
-                alert(`${player.name}: You don't have enough funds for ${this.property.name}`)
-            }
-            PlayerService.updatePlayer(player)
+            eventBus.$emit('player-buys-property-update', {'player': player, 'property': this.property})
         },
         playerClass: function (playerIndex) {
             return `player-${playerIndex}`;
