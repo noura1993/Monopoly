@@ -1,4 +1,5 @@
 const basePropertiesURL = 'http://localhost:3000/api/properties/';
+
 const basePlayersURL = 'http://localhost:3000/api/players/';
 
 export default {
