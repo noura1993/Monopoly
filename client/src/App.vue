@@ -3,6 +3,9 @@
     <player-form></player-form>
     <players-grid :players="players"></players-grid>
     <board-grid/>
+    <ul>
+      <li v-for="(property, index) in properties" :key="index">{{property}}</li>
+    </ul>
   </div>
 </template>
 
@@ -18,7 +21,8 @@ export default {
   name: 'App',
   data() {
     return {
-      players: []
+      players: [],
+      properties: []
     }
   },
   components: {
@@ -27,17 +31,28 @@ export default {
     "players-grid": PlayersGrid
   },
   mounted() {
-    eventBus.$on('submit-player', (player) => {
+    this.addPlayerToPlayerList();
+    this.getFullListOfProperties();
+  },
+  methods: {
+    addPlayerToPlayerList: function () {
+      eventBus.$on('submit-player', (player) => {
       PlayerService.addPlayer(player)
-      .then((addedPlayer) => {
-        if (addedPlayer) {
-          this.players.push(addedPlayer)
-        }
-        else {
-          alert('Try again, nerd.')
-        }
+        .then((addedPlayer) => {
+          if (addedPlayer) {
+            this.players.push(addedPlayer)
+          }
+          else {
+            alert('Try again, nerd.')
+          }
+        })
       })
-    })
+    },
+
+    getFullListOfProperties: function () {
+      PlayerService.getProperties()
+        .then((properties) => this.properties = properties);
+    }
   }
 }
 </script>
