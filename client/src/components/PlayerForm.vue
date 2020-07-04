@@ -5,7 +5,12 @@
     <input type="text" id="name" name="name" v-model="name" required/>
 
     <label for="colour">Colour:</label>
-    <input type="text" id="colour" name="colour" v-model="colour" required/>
+    <select name="colour-field" id="colour" v-model="colour">
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="yellow">Purple</option>
+    </select>
 
     <input type="submit" name="submit" value="Save" />
   </form>
