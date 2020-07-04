@@ -1,10 +1,11 @@
 <template>
-  <div class="board">
+  <div class="board-wrapper">
+      <div class="board">
     <div class="corner top-left-corner">
       <div class="corner-container">Free Parking</div>
     </div>
     <div class="row top-row">
-      <div class="property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+      <div class="cell property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
           <div class="property-color">Color</div>
           <div class="property-name">Name</div>
           <div class="property-price">Price</div>
@@ -14,7 +15,7 @@
       <div class="corner-container">Go To Jail</div>
     </div>
     <div class="column left-column">
-        <div class="left-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+        <div class="cell left-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
           <div class="property-color">Color</div>
           <div class="property-name">Name</div>
           <div class="property-price">Price</div>
@@ -22,7 +23,7 @@
     </div>
     <div class="center"></div>
     <div class="column right-column">
-        <div class="right-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+        <div class="cell right-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
           <div class="property-color">Color</div>
           <div class="property-name">Name</div>
           <div class="property-price">Price</div>
@@ -32,7 +33,7 @@
       <div class="corner-container">Go</div>
     </div>
     <div class="row bottom-row">
-       <div class="property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+       <div class="cell property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
           <div class="property-color">Color</div>
           <div class="property-name">Name</div>
           <div class="property-price">Price</div>
@@ -42,6 +43,7 @@
       <div class="corner-container">In Jail/Just Visiting</div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -49,24 +51,32 @@ export default {};
 </script>
 
 <style>
+.board-wrapper {
+    text-align: center;
+}
+
 .board {
   display: grid;
   grid-template-columns: 160px repeat(8, 120px) 160px;
   grid-template-rows: 160px repeat(8, 120px) 160px;
-  grid-gap: 3px;
   background: black;
-  border: 2px solid black;
+  border: 1px solid black;
+  width: 1280px;
+  margin: auto;
+}
+
+.cell {
+    height: 157.5px;
+    width: 117.5px;
 }
 
 .row {
   display: grid;
-  grid-gap: 3px;
   grid-template-columns: repeat(8, 120px);
 }
 
 .column {
   display: grid;
-  grid-gap: 3px;
   grid-template-rows: repeat(8, 120px);
 }
 
@@ -94,6 +104,7 @@ export default {};
   grid-column: 2/10;
   grid-row: 2/10;
   background: white;
+  border: 1px solid black;
 }
 
 .right-column {
@@ -118,21 +129,19 @@ export default {};
 
 .property-container {
     background: white;
+    border: 1px solid black;
 }
 
 .left-property {
-    height: 160px;
-    width: 120px;
-    transform: translate(16%, -12%) rotate(90deg);
+    transform: translate(16.5%, -12.5%) rotate(90deg);
 }
 
 .right-property {
-    height: 160px;
-    width: 120px;
-    transform: translate(16%, -12%) rotate(-90deg);
+    transform: translate(16.5%, -12.5%) rotate(-90deg);
 }
 
 .corner {
     background: white;
+    border: 1px solid black;
 }
 </style>
