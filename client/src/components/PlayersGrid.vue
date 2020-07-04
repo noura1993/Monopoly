@@ -7,9 +7,10 @@
             <li v-for="(property, index) in player.properties" :key="index">{{property.name}}</li>
         </ul>
         <label for="player-chooses-property">Choose a property below</label>
-        <select id="player-chooses-property" v-on:change="buyProperty(player)" v-model="property">
+        <select id="player-chooses-property" v-model="property">
             <option v-for="(property, index) in properties" :value="property" :key="index">{{property.name}}</option>
         </select>
+        <button v-on:click="buyProperty(player)">Buy Property</button>
 	</div>
 </div>
 </template>
@@ -29,11 +30,21 @@ export default {
     methods: {
         buyProperty: function (player) {
             if (player.wallet < this.property.value) {
-                alert(`${player.name}: You don't have enough funds for ${this.property.name}`);
+                alert(`${player.name}: You don't have enough funds for ${this.property.name}.`);
                 return;
             }
+            let exitCondition = null;
+            player.properties.forEach((property) => {
+                if (property._id === this.property._id) {
+                    alert(`${player.name}: You already have ${this.property.name} purchased.`);
+                    exitCondition = true;
+                }
+            })
+            if (exitCondition) { return; }
+
             eventBus.$emit('player-buys-property-update', {'player': player, 'property': this.property})
         },
+
         playerClass: function (playerIndex) {
             return `player-${playerIndex}`;
         }
