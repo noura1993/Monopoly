@@ -6,9 +6,9 @@
     </div>
     <div class="row top-row">
       <div class="cell property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
-          <div class="property-color">Color</div>
-          <div class="property-name">Name</div>
-          <div class="property-price">Price</div>
+          <div class="property-color" v-bind:style="{'background-color': 'red' }"></div>
+          <div class="property-name">Your property</div>
+          <div class="property-price">Price: Expensive</div>
       </div>
     </div>
     <div class="corner top-right-corner">
@@ -16,17 +16,17 @@
     </div>
     <div class="column left-column">
         <div class="cell left-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
-          <div class="property-color">Color</div>
-          <div class="property-name">Name</div>
-          <div class="property-price">Price</div>
+          <div class="property-color" v-bind:style="{'background-color': 'yellow' }"></div>
+          <div class="property-name">His Property</div>
+          <div class="property-price">Price: Cheap</div>
       </div>
     </div>
     <div class="center"></div>
     <div class="column right-column">
         <div class="cell right-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
-          <div class="property-color">Color</div>
-          <div class="property-name">Name</div>
-          <div class="property-price">Price</div>
+          <div class="property-color" v-bind:style="{'background-color': 'green' }"></div>
+          <div class="property-name">Her property</div>
+          <div class="property-price">Price: Moderate</div>
       </div>
     </div>
     <div class="corner bottom-right-corner">
@@ -34,9 +34,9 @@
     </div>
     <div class="row bottom-row">
        <div class="cell property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
-          <div class="property-color">Color</div>
-          <div class="property-name">Name</div>
-          <div class="property-price">Price</div>
+          <div class="property-color" v-bind:style="{'background-color': 'blue' }"></div>
+          <div class="property-name">My property</div>
+          <div class="property-price">Price: Whaaaaat!</div>
       </div>
     </div>
     <div class="corner bottom-left-corner">
@@ -130,6 +130,21 @@ export default {};
 .property-container {
     background: white;
     border: 1px solid black;
+}
+
+.property-color {
+    height: 15%;
+}
+
+.property-name {
+    padding-top: 10%;
+    margin: auto;
+    height: 80px;
+    width: 80px;
+}
+
+.property-price {
+    padding-bottom: 10%;
 }
 
 .left-property {
