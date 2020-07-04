@@ -53,6 +53,7 @@ export default {
     },
 
     playerBuysProperty: function () {
+      //$emit event for this is in PlayersGrid.vue
       eventBus.$on('player-buys-property-update', (eventBusObject) => {
         eventBusObject.player.wallet -= eventBusObject.property.value;
         eventBusObject.player.properties.push(eventBusObject.property);
