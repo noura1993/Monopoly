@@ -11,10 +11,10 @@
 
 <script>
 import {eventBus} from "./main"
-import PlayerService from "./services/PlayerService"
+import PlayerService from "./services/PlayerService";
 
-import PlayersGrid from "./components/PlayersGrid"
-import PlayerForm from "./components/PlayerForm"
+import PlayersGrid from "./components/PlayersGrid";
+import PlayerForm from "./components/PlayerForm";
 import BoardGrid from "./components/BoardGrid";
 
 export default {
