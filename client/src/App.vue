@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <player-form></player-form>
-    <!-- <players-grid :players="players" :properties="properties"></players-grid> -->
-    <!-- <board-grid /> -->
+    <player-form v-if="showForm"></player-form>
+    <board-grid :properties="properties" v-if="showBoardGrid"/>
   </div>
 </template>
 
@@ -21,7 +20,10 @@ export default {
   data() {
     return {
       players: [],
-      properties: []
+      properties: [],
+      showForm: true,
+      showBoardGrid: false
+
     }
   },
   components: {
@@ -36,6 +38,11 @@ export default {
     this.getFullListOfProperties();
     this.playerBuysProperty();
     this.playerSellsProperty();
+
+    eventBus.$on("start-game", () => {
+      this.showForm = false;
+      this.showBoardGrid = true;
+    })
   },
   methods: {
     getPlayers: function () {

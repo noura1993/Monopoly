@@ -2,7 +2,7 @@
 <form v-on:submit.prevent="handleSubmit">
     <h1>Add a player</h1>
     <label for="name">Player Name:</label>
-    <input type="text" id="name" v-model="name" required/>
+    <input type="text" id="name" v-model="name" />
 
     <label for="colour">Colour:</label>
     <select name="colour-field" id="colour" v-model="colour">
@@ -13,6 +13,7 @@
     </select>
 
     <input type="submit" name="submit" value="Save" />
+    <button value="Play" v-on:click="startGame">Play</button>
   </form>
 </template>
 
@@ -36,6 +37,9 @@ export default {
     handleSubmit() {
       eventBus.$emit('submit-player', this.$data);
       this.name = this.colour = '';
+    },
+    startGame() {
+      eventBus.$emit("start-game")
     }
   }
 };
