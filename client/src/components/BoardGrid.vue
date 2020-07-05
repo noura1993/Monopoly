@@ -1,44 +1,45 @@
 <template>
   <div class="board-wrapper">
-    <roll-dice/>
+    <!-- <roll-dice/> -->
     <!-- <turn-handler/> -->
       <div class="board">
+        
     <div class="corner top-left-corner">
       <div class="corner-container">Free Parking</div>
     </div>
     <div class="row top-row">
-      <div class="cell property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+      <div class="cell top-property property-container" v-for="(property, index) in top_properties" :key="index">
           <div class="property-color" v-bind:style="{'background-color': 'red' }"></div>
-          <div class="property-name">Your property</div>
-          <div class="property-price">Price: Expensive</div>
+          <div class="property-name">{{property.name}}</div>
+          <div class="property-price">Price: {{property.value}}</div>
       </div>
     </div>
     <div class="corner top-right-corner">
       <div class="corner-container">Go To Jail</div>
     </div>
     <div class="column left-column">
-        <div class="cell left-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+        <div class="cell left-property property-container" v-for="(property, index) in left_properties" :key="index">
           <div class="property-color" v-bind:style="{'background-color': 'yellow' }"></div>
-          <div class="property-name">His Property</div>
-          <div class="property-price">Price: Cheap</div>
+          <div class="property-name">{{property.name}}</div>
+          <div class="property-price">Price: {{property.value}}</div>
       </div>
     </div>
     <div class="center"></div>
     <div class="column right-column">
-        <div class="cell right-property property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+        <div class="cell right-property property-container" v-for="(property, index) in right_properties" :key="index">
           <div class="property-color" v-bind:style="{'background-color': 'green' }"></div>
-          <div class="property-name">Her property</div>
-          <div class="property-price">Price: Moderate</div>
+          <div class="property-name">{{property.name}}</div>
+          <div class="property-price">Price: {{property.value}}</div>
       </div>
     </div>
     <div class="corner bottom-right-corner">
       <div class="corner-container">Go</div>
     </div>
     <div class="row bottom-row">
-       <div class="cell property-container" v-for="property in Array.from(Array(8).keys())" :key="property">
+       <div class="cell bottom-property property-container" v-for="(property, index) in bottom_properties" :key="index">
           <div class="property-color" v-bind:style="{'background-color': 'blue' }"></div>
-          <div class="property-name">My property</div>
-          <div class="property-price">Price: Whaaaaat!</div>
+          <div class="property-name">{{property.name}}</div>
+          <div class="property-price">Price: {{property.value}}</div>
       </div>
     </div>
     <div class="corner bottom-left-corner">
@@ -49,6 +50,7 @@
 </template>
 
 <script>
+import PlayerService from '../services/PlayerService'
 import RollDice from './RollDice';
 import TurnHandler from './TurnHandler';
 
@@ -56,6 +58,23 @@ export default {
   components: {
     "roll-dice": RollDice,
     "turn-handler": TurnHandler
+  },
+  data() {
+    return {
+      top_properties: [],
+      left_properties: [],
+      right_properties: [],
+      bottom_properties: []
+    }
+  },
+  mounted() {
+    PlayerService.getProperties()
+      .then((properties) => {
+        this.top_properties = properties.splice(0, 8);
+        this.left_properties = properties.splice(0, 8);
+        this.right_properties = properties.splice(0, 8);
+        this.bottom_properties = properties.splice(0, 8);
+      })
   }
 };
 </script>

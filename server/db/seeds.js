@@ -43,19 +43,14 @@ db.properties.insertMany([
         "rent_value": 10
     },
     {
-        "name": "Adam Street",
-        "value": 50,
-        "rent_value": 10
-    },
-    {
         "name": "Alex Chance Cards",
         "value": 0,
         "rent_value": 0
     },
     {
-        "name": "Jail",
-        "value": 0,
-        "rent_value": 50
+        "name": "Adam Street",
+        "value": 50,
+        "rent_value": 10
     },
     {
         "name": "Rumen Street",
@@ -75,11 +70,6 @@ db.properties.insertMany([
     {
         "name": "Louise Believes In You",
         "value": 50,
-        "rent_value": 0
-    },
-    {
-        "name": "Free Parking",
-        "value": 0,
         "rent_value": 0
     },
     {
@@ -116,11 +106,6 @@ db.properties.insertMany([
         "name": "Castle Terrace",
         "value": 50,
         "rent_value": 5
-    },
-    {
-        "name": "Go to Jail",
-        "value": 0,
-        "rent_value": 0
     },
     {
         "name": "Princes Street",

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <!-- <player-form></player-form> -->
-    <!-- <players-grid :players="players" :properties="properties"></players-grid> -->
+    <player-form></player-form>
+    <players-grid :properties="properties" :players="players"></players-grid>
+    <!-- <turn-handler :properties="properties" :players="players"></turn-handler> -->
+    <!-- <roll-dice></roll-dice> -->
     <board-grid :properties="properties"/>
   </div>
 </template>
@@ -11,8 +13,10 @@ import {eventBus} from "./main"
 import PlayerService from "./services/PlayerService";
 
 import PlayersGrid from "./components/PlayersGrid";
+import TurnHandler from "./components/TurnHandler";
 import PlayerForm from "./components/PlayerForm";
 import BoardGrid from "./components/BoardGrid";
+import RollDice from "./components/RollDice";
 
 export default {
   name: 'App',
@@ -23,8 +27,10 @@ export default {
     }
   },
   components: {
+    "roll-dice": RollDice,
     "board-grid": BoardGrid,
     "player-form": PlayerForm,
+    "turn-handler": TurnHandler,
     "players-grid": PlayersGrid
   },
   mounted() {

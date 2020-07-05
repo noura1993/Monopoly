@@ -1,18 +1,35 @@
 <template>
+<div>
   <div class="turn-handler-container">
       <h2>Turn:</h2>
       <hr class="turn-handler-hr">
       <h3>Total Moves:</h3>
       <h3>Position:</h3>
-      <button class="turn-handler-btn">Buy</button>
-      <button class="turn-handler-btn">Pay Rent</button>
-      <button class="turn-handler-btn">End Turn</button>
-      <button class="turn-handler-btn">Declare Bankruptcy</button>
+      <button v-on:click="handleBuy" class="turn-handler-btn">Buy</button>
+      <button v-on:click="handleRent" class="turn-handler-btn">Pay Rent</button>
+      <button v-on:click="handleEndTurn" class="turn-handler-btn">End Turn</button>
+      <button v-on:click="handleBankruptcy" class="turn-handler-btn">Declare Bankruptcy</button>
   </div>
+</div>
 </template>
 
 <script>
 export default {
+    props: ['players', 'properties'],
+    methods: {
+        handleBuy: function () {
+
+        },
+        handleRent: function () {
+
+        },
+        handleEndTurn: function () {
+
+        },
+        handleBankruptcy: function () {
+            
+        }
+    }
 
 }
 </script>
