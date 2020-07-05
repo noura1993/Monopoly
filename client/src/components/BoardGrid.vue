@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
     <roll-dice/>
-    <turn-hundler/>
+    <turn-handler/>
       <div class="board">
     <div class="corner top-left-corner">
       <div class="corner-container">Free Parking</div>
@@ -49,11 +49,13 @@
 </template>
 
 <script>
-import RollDice from './RollDice.vue';
+import RollDice from './RollDice';
+import TurnHandler from './TurnHandler';
+
 export default {
   components: {
     "roll-dice": RollDice,
-    "turn-hundler": TurnHandler
+    "turn-handler": TurnHandler
   }
 };
 </script>
