@@ -31,6 +31,7 @@ export default {
     font-size: 20px;
     border-radius: 30px;
     margin-left: 10px;
+    padding-right: 3%;
 }
 
 .btn:hover {
