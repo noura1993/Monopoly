@@ -18,7 +18,7 @@
 </template>
 
 <script>
-
+import PlayerService from "../services/PlayerService";
 import { eventBus } from '@/main';
 
 export default {
@@ -29,14 +29,21 @@ export default {
       colour: "",
       wallet: 1500,
       properties: [],
-      position: 0,
-      dice: null
+      position: 0
+      // dice: null
     };
   },
   methods: {
     handleSubmit() {
-      eventBus.$emit('submit-player', this.$data);
-      this.name = this.colour = '';
+      // eventBus.$emit('submit-player', this.$data);
+      PlayerService.addPlayer(this.$data)
+        .then((addedPlayer) => {
+          if (!addedPlayer) {
+            alert('Try again, nerd.');
+          }
+        });
+      this.name = '';
+      this.colour = '';
     },
     startGame() {
       eventBus.$emit("start-game")
