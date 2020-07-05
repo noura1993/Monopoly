@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <player-form></player-form>
-    <players-grid :players="players" :properties="properties"></players-grid>
+    <!-- <player-form></player-form> -->
+    <!-- <players-grid :players="players" :properties="properties"></players-grid> -->
     <board-grid :properties="properties"/>
   </div>
 </template>
