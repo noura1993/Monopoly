@@ -3,33 +3,16 @@
     <!-- <roll-dice/> -->
     <turn-handler/>
     <div class="player player1">
-      <div v-bind:style="{'background-color': this.players[0].colour }">Player1</div>
-      <!-- <hr> -->
-      <div>Name: {{this.players[0].name}}</div>
-      <div>Colour: {{this.players[0].colour}}</div>
-      <div>Balance: {{this.players[0].wallet}}</div>
-      <div>Owned Properties: {{this.players[0].properties}}</div>
+      <player-info :player="this.players[0]"/>
     </div>
     <div class="player player2">
-      <div v-bind:style="{'background-color': this.players[1].colour }">Player2</div>
-      <div>Name: {{this.players[1].name}}</div>
-      <div>Colour: {{this.players[1].colour}}</div>
-      <div>Balance: {{this.players[1].wallet}}</div>
-      <div>Owned Properties: {{this.players[1].properties}}</div>
+      <player-info :player="this.players[1]"/>
     </div>
      <div class="player player3">
-      <div v-bind:style="{'background-color': this.players[2].colour }">Player3</div>
-      <div>Name: {{this.players[2].name}}</div>
-      <div>Colour: {{this.players[2].colour}}</div>
-      <div>Balance: {{this.players[2].wallet}}</div>
-      <div>Owned Properties: {{this.players[2].properties}}</div>
+      <player-info :player="this.players[2]"/>
     </div>
     <div class="player player4">
-      <div v-bind:style="{'background-color': this.players[3].colour }">Player4</div>
-      <div>Name: {{this.players[3].name}}</div>
-      <div>Colour: {{this.players[3].colour}}</div>
-      <div>Balance: {{this.players[3].wallet}}</div>
-      <div>Owned Properties: {{this.players[3].properties}}</div>
+      <player-info :player="this.players[3]"/>
     </div>
       <div class="board">
         
@@ -82,6 +65,7 @@
 import PlayerService from '../services/PlayerService'
 import RollDice from './RollDice';
 import TurnHandler from './TurnHandler';
+import PlayerInfo from './PlayerInfo';
 
 export default {
   name: "board-grid",
@@ -96,7 +80,8 @@ export default {
   },
   components: {
     "roll-dice": RollDice,
-    "turn-handler": TurnHandler
+    "turn-handler": TurnHandler,
+    "player-info": PlayerInfo
   },
   beforeCreate() {
     PlayerService.getProperties()
