@@ -1,4 +1,4 @@
-use propertys;
+use monopoly;
 db.dropDatabase()
 
 db.properties.insertMany([

@@ -16,7 +16,7 @@ const databaseURL = process.env.DATABASE_URL;
 
 MongoClient.connect(databaseURL)
     .then((client) => {
-        const db = client.db('propertys');
+        const db = client.db('monopoly');
         const propertiesCollection = db.collection('properties');
         const playersCollection = db.collection('players');
         const propertiesRouter = createRouter(propertiesCollection);
