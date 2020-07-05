@@ -1,43 +1,43 @@
 <template>
   <div id="app">
     <player-form v-if="showForm"></player-form>
-    <board-grid :properties="properties" v-if="showBoardGrid"/>
+    <board-grid v-if="showBoardGrid"/>
   </div>
 </template>
 
 <script>
 import {eventBus} from "./main"
-import PlayerService from "./services/PlayerService";
+// import PlayerService from "./services/PlayerService";
 
-import PlayersGrid from "./components/PlayersGrid";
-import TurnHandler from "./components/TurnHandler";
+// import PlayersGrid from "./components/PlayersGrid"; 
+// import TurnHandler from "./components/TurnHandler";
 import PlayerForm from "./components/PlayerForm";
 import BoardGrid from "./components/BoardGrid";
-import RollDice from "./components/RollDice";
+// import RollDice from "./components/RollDice";
 
 export default {
   name: 'App',
   data() {
     return {
-      players: [],
-      properties: [],
+      // players: [],
+      // properties: [],
       showForm: true,
       showBoardGrid: false
 
     }
   },
   components: {
-    "roll-dice": RollDice,
+    // "roll-dice": RollDice,
     "board-grid": BoardGrid,
-    "player-form": PlayerForm,
-    "turn-handler": TurnHandler,
-    "players-grid": PlayersGrid
+    "player-form": PlayerForm
+    // "turn-handler": TurnHandler,
+    // "players-grid": PlayersGrid "Delete playersGrid from our components"
   },
   mounted() {
-    this.addPlayerToPlayerList();
-    this.getFullListOfProperties();
-    this.playerBuysProperty();
-    this.playerSellsProperty();
+    // this.addPlayerToPlayerList();
+    // this.getFullListOfProperties();
+    // this.playerBuysProperty();
+    // this.playerSellsProperty();
 
     eventBus.$on("start-game", () => {
       this.showForm = false;
@@ -45,61 +45,67 @@ export default {
     })
   },
   methods: {
-    getPlayers: function () {
-      PlayerService.getPlayers()
-        .then((players) => this.players = players)
-    },
+    // Should be in boardGrid component in mounted 
+    // getPlayers: function () {
+    //   PlayerService.getPlayers()
+    //     .then((players) => this.players = players)
+    // },
 
-    addPlayerToPlayerList: function () {
-      eventBus.$on('submit-player', (player) => {
-      PlayerService.addPlayer(player)
-        .then((addedPlayer) => {
-          if (addedPlayer) {
-            this.players.push(addedPlayer)
-          }
-          else {
-            alert('Try again, nerd.')
-          }
-        })
-      })
-    },
 
-    getFullListOfProperties: function () {
-      PlayerService.getProperties()
-        .then((properties) => this.properties = properties);
-    },
+    // should be in form component in methods
+    // addPlayerToPlayerList: function () {
+    //   eventBus.$on('submit-player', (player) => {
+    //   PlayerService.addPlayer(player)
+    //     .then((addedPlayer) => {
+    //       if (addedPlayer) {
+    //         this.players.push(addedPlayer)
+    //       }
+    //       else {
+    //         alert('Try again, nerd.')
+    //       }
+    //     })
+    //   })
+    // },
 
-    playerBuysProperty: function () {
-      //$emit event for this is in PlayersGrid.vue
-      eventBus.$on('player-buys-property-update', (eventBusObject) => {
-        eventBusObject.player.wallet -= eventBusObject.property.value;
-        eventBusObject.player.properties.push(eventBusObject.property);
+    // Already implemented in boardGrid component
+    // getFullListOfProperties: function () {
+    //   PlayerService.getProperties()
+    //     .then((properties) => this.properties = properties);
+    // },
 
-        PlayerService.updatePlayer(eventBusObject.player)
-          // .then(() => {
-          //   PlayerService.getPlayers()
-          //     .then((players) => this.players = players)
-          // })
-      })
-    },
+    // Should be in TurnHandler component
+    // playerBuysProperty: function () {
+    //   //$emit event for this is in PlayersGrid.vue
+    //   eventBus.$on('player-buys-property-update', (eventBusObject) => {
+    //     eventBusObject.player.wallet -= eventBusObject.property.value;
+    //     eventBusObject.player.properties.push(eventBusObject.property);
 
-    playerSellsProperty: function () {
-      //$emit event for this in in PlayersGrid.vue
-      eventBus.$on('player-sells-property-update', (eventBusObject) => {
-        //Player selling adding sale value to wallet, removing property from their list
-        //and updating their database info
-        eventBusObject.playerSelling.wallet += eventBusObject.saleValue;
-        const index = eventBusObject.playerSelling.properties.findIndex((property) => property._id === eventBusObject.property._id);
-        eventBusObject.playerSelling.properties.splice(index, 1);
-        PlayerService.updatePlayer(eventBusObject.playerSelling);
+    //     PlayerService.updatePlayer(eventBusObject.player)
+    //       // .then(() => {
+    //       //   PlayerService.getPlayers()
+    //       //     .then((players) => this.players = players)
+    //       // })
+    //   })
+    // },
 
-        //Player buying deducting sale value from wallet, adding property to their list
-        //and updating their database info
-        eventBusObject.playerToSellTo.wallet -= eventBusObject.saleValue;
-        eventBusObject.playerToSellTo.properties.push(eventBusObject.property);
-        PlayerService.updatePlayer(eventBusObject.playerToSellTo)
-      })
-    }
+    // Extensions: Should be in TurnHandler component
+    // playerSellsProperty: function () {
+    //   //$emit event for this in in PlayersGrid.vue
+    //   eventBus.$on('player-sells-property-update', (eventBusObject) => {
+    //     //Player selling adding sale value to wallet, removing property from their list
+    //     //and updating their database info
+    //     eventBusObject.playerSelling.wallet += eventBusObject.saleValue;
+    //     const index = eventBusObject.playerSelling.properties.findIndex((property) => property._id === eventBusObject.property._id);
+    //     eventBusObject.playerSelling.properties.splice(index, 1);
+    //     PlayerService.updatePlayer(eventBusObject.playerSelling);
+
+    //     //Player buying deducting sale value from wallet, adding property to their list
+    //     //and updating their database info
+    //     eventBusObject.playerToSellTo.wallet -= eventBusObject.saleValue;
+    //     eventBusObject.playerToSellTo.properties.push(eventBusObject.property);
+    //     PlayerService.updatePlayer(eventBusObject.playerToSellTo)
+    //   })
+    // }
   }
 }
 </script>
