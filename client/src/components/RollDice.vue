@@ -1,8 +1,8 @@
 <template>
   <div class="roll-dice-container">
-      <button class="btn">Roll Dice</button>
-      <button class="btn">Pay Fine</button>
-      <button class="btn">Declare Bankruptcy</button>
+      <button class="dice-btn">Roll Dice</button>
+      <button class="dice-btn">Pay Fine</button>
+      <button class="dice-btn">Declare Bankruptcy</button>
   </div>
 </template>
 
@@ -15,31 +15,26 @@ export default {
 <style>
 .roll-dice-container {
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;    
-    width: 23%;
-    height: 3%;
-    background-color: rgb(114, 184, 155);
+    left: 50%;
+    transform:translateX(-50%);
+    top: 50%;
+    background-color: rgb(255, 255, 255);
     border-radius: 30px;
+    border: 1px solid black;
     padding: 1%;
-    margin: auto;
 }
 
-.btn {
+.dice-btn {
     font-size: 20px;
-    border-radius: 30px;
-    margin-left: 10px;
-    padding-right: 3%;
+    border-radius: 35px;
 }
 
-.btn:hover {
+.dice-btn:hover {
     background-color: rgb(109, 192, 157);
     cursor: pointer;
 }
 
-.btn:focus {
+.dice-btn:focus {
     outline: none;
 }
 

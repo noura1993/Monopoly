@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
     <roll-dice/>
-    <turn-handler/>
+    <!-- <turn-handler/> -->
       <div class="board">
     <div class="corner top-left-corner">
       <div class="corner-container">Free Parking</div>
