@@ -1,13 +1,13 @@
 <template>
   <div class="turn-handler-container">
       <h2>Turn:</h2>
-      <hr>
+      <hr class="turn-handler-hr">
       <h3>Total Moves:</h3>
       <h3>Position:</h3>
-      <button class="btn">Buy</button>
-      <button class="btn">Pay Rent</button>
-      <button class="btn">End Turn</button>
-      <button class="btn">Declare Bankruptcy</button>
+      <button class="turn-handler-btn">Buy</button>
+      <button class="turn-handler-btn">Pay Rent</button>
+      <button class="turn-handler-btn">End Turn</button>
+      <button class="turn-handler-btn">Declare Bankruptcy</button>
   </div>
 </template>
 
@@ -20,20 +20,16 @@ export default {
 <style>
 .turn-handler-container {
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;    
-    width: 23%;
-    height: 23%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    top: 50%;
     background-color: rgb(255, 255, 255);
     border-radius: 30px;
-    padding: 1%;
-    margin: auto;
     border: 1px solid black;
+    padding: 1%;
 }
 
-.btn {
+.turn-handler-btn {
     font-size: 20px;
     border-radius: 35px;
     margin-top: 1.5%;
@@ -42,16 +38,16 @@ export default {
     padding-right: 3%;
 }
 
-.btn:hover {
+.turn-handler-btn:hover {
     background-color: rgb(109, 192, 157);
     cursor: pointer;
 }
 
-.btn:focus {
+.turn-handler-btn:focus {
     outline: none;
 }
 
-hr {
+.turn-handler-hr {
     border: 1px solid black;
 }
 </style>
