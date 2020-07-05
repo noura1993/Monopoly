@@ -1,7 +1,23 @@
 <template>
   <div class="board-wrapper">
     <!-- <roll-dice/> -->
-    <!-- <turn-handler/> -->
+    <turn-handler/>
+    <div class="player player1">
+      <div>Player1</div>
+      <hr>
+    </div>
+    <div class="player player2">
+      <div>Player2</div>
+      <hr>
+    </div>
+     <div class="player player3">
+      <div>Player3</div>
+      <hr>
+    </div>
+    <div class="player player4">
+      <div>Player4</div>
+      <hr>
+    </div>
       <div class="board">
         
     <div class="corner top-left-corner">
@@ -81,8 +97,44 @@ export default {
 
 <style>
 .board-wrapper {
-    text-align: center;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 250px 1280px 250px;
+  grid-template-rows: 640px 640px;
+  width: 1780px;
+  margin: auto;
 }
+
+.player {
+  border: 1px solid black; 
+}
+
+.player1 {
+  grid-column: 1;
+  grid-row: 1;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.player2 {
+  grid-column: 3;
+  grid-row: 1;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.player3 {
+  grid-column: 1;
+  grid-row: 2;
+  margin-right: 20px;
+}
+
+.player4 {
+  grid-column: 3;
+  grid-row: 2;
+  margin-left: 20px;
+}
+
 
 .board {
   display: grid;
@@ -92,6 +144,8 @@ export default {
   border: 1px solid black;
   width: 1280px;
   margin: auto;
+  grid-column: 2/3;
+  grid-row: 1/3;
 }
 
 .cell {
