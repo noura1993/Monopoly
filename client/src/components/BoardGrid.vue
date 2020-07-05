@@ -21,9 +21,7 @@
     </div>
     <div class="row top-row">
       <div class="cell top-property property-container" v-for="property in top_properties" :key="property.name">
-          <div class="property-color" v-bind:style="{'background-color': property.colour }"></div>
-          <div class="property-name">{{property.name}}</div>
-          <div class="property-price">Price: £{{property.value}}</div>
+          <property-info :property="property"/>
       </div>
     </div>
     <div class="corner top-right-corner">
@@ -31,17 +29,13 @@
     </div>
     <div class="column left-column">
         <div class="cell left-property property-container" v-for="property in left_properties" :key="property.name">
-          <div class="property-color" v-bind:style="{'background-color': property.colour }"></div>
-          <div class="property-name">{{property.name}}</div>
-          <div class="property-price">Price: £{{property.value}}</div>
+        <property-info :property="property"/>
       </div>
     </div>
     <div class="center"></div>
     <div class="column right-column">
         <div class="cell right-property property-container" v-for="property in right_properties" :key="property.name">
-          <div class="property-color" v-bind:style="{'background-color': property.colour }"></div>
-          <div class="property-name">{{property.name}}</div>
-          <div class="property-price">Price: £{{property.value}}</div>
+        <property-info :property="property"/>
       </div>
     </div>
     <div class="corner bottom-right-corner">
@@ -49,9 +43,7 @@
     </div>
     <div class="row bottom-row">
        <div class="cell bottom-property property-container" v-for="property in bottom_properties" :key="property.name">
-          <div class="property-color" v-bind:style="{'background-color': property.colour }"></div>
-          <div class="property-name">{{property.name}}</div>
-          <div class="property-price">Price: £{{property.value}}</div>
+        <property-info :property="property"/>
       </div>
     </div>
     <div class="corner bottom-left-corner">
@@ -66,6 +58,7 @@ import PlayerService from '../services/PlayerService'
 import RollDice from './RollDice';
 import TurnHandler from './TurnHandler';
 import PlayerInfo from './PlayerInfo';
+import PropertyInfo from './PropertyInfo';
 
 export default {
   name: "board-grid",
@@ -81,7 +74,8 @@ export default {
   components: {
     "roll-dice": RollDice,
     "turn-handler": TurnHandler,
-    "player-info": PlayerInfo
+    "player-info": PlayerInfo,
+    "property-info":PropertyInfo
   },
   beforeCreate() {
     PlayerService.getProperties()
@@ -217,21 +211,6 @@ export default {
 .property-container {
     background: white;
     border: 1px solid black;
-}
-
-.property-color {
-    height: 15%;
-}
-
-.property-name {
-    padding-top: 10%;
-    margin: auto;
-    height: 80px;
-    width: 80px;
-}
-
-.property-price {
-    padding-bottom: 10%;
 }
 
 .left-property {
