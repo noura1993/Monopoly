@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <player-form></player-form>
-    <players-grid :properties="properties" :players="players"></players-grid>
+    <!-- <player-form></player-form>
+    <players-grid :properties="properties" :players="players"></players-grid> -->
     <!-- <turn-handler :properties="properties" :players="players"></turn-handler> -->
     <!-- <roll-dice></roll-dice> -->
-    <board-grid :properties="properties"/>
+    <board-grid/>
   </div>
 </template>
 
