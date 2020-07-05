@@ -4,15 +4,19 @@
     <turn-handler/>
     <div class="player player1">
       <div>Player1</div>
+      <hr>
     </div>
     <div class="player player2">
       <div>Player2</div>
+      <hr>
     </div>
      <div class="player player3">
       <div>Player3</div>
+      <hr>
     </div>
     <div class="player player4">
       <div>Player4</div>
+      <hr>
     </div>
       <div class="board">
     <div class="corner top-left-corner">
