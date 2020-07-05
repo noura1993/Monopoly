@@ -1,5 +1,6 @@
 <template>
   <div class="board-wrapper">
+    <roll-dice/>
       <div class="board">
     <div class="corner top-left-corner">
       <div class="corner-container">Free Parking</div>
@@ -47,7 +48,12 @@
 </template>
 
 <script>
-export default {};
+import RollDice from './RollDice.vue';
+export default {
+  components: {
+    "roll-dice": RollDice
+  }
+};
 </script>
 
 <style>
