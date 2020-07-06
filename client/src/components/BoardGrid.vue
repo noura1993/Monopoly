@@ -109,11 +109,42 @@ export default {
       this.shouldShowTurnHandler = false;
     });
     
-    eventBus.$on('buy-property', () => {
+    eventBus.$on('buy-property', () => {  
       const propertyIndex = this.players[this.currentPlayerIndex].position; 
-      const property = this.properties[propertyIndex];
+      const property = this.allProperties[propertyIndex];
+      let exitCondition = null;
+
+      if (this.players[this.currentPlayerIndex].wallet < property.value) {
+        alert(`${this.players[this.currentPlayerIndex].name}: You don't have enough funds for ${property.name}`);
+        return;
+      }
+
+      this.players[this.currentPlayerIndex].properties.forEach((ownedProperty) => {
+        if (ownedProperty._id === property._id) {
+          alert(`${this.players[this.currentPlayerIndex].name}: You already have ${property.name} purchased.`);
+          exitCondition = true;
+        }
+      })
+      if (exitCondition) { return; }
+
+      this.players.forEach((player) => {
+        player.properties.forEach((playerProperty) => {
+          if (playerProperty._id === property._id) {
+            alert(`${this.players[this.currentPlayerIndex].name}: Sorry, this is already owned by ${player.name}`)
+            exitCondition = true;
+          }
+        })
+      })
+      if (exitCondition) { return; }
+
       this.players[this.currentPlayerIndex].properties.push(property);
-      this.players[this.currentPlayerIndex].wallet -= currentProperty.price;
+      this.players[this.currentPlayerIndex].wallet -= property.value;
+
+      PlayerService.updatePlayer(this.players[this.currentPlayerIndex])
+        .then(() => {
+          PlayerService.getPlayers()
+            .then((players) => this.players = players)
+        })
     });
     
     eventBus.$on("roll-dice", (rollDiceValue) => {
