@@ -40,5 +40,11 @@ export default {
             method: 'DELETE',
         })
             // .then(res => res.json());
+    },
+
+    deletePlayers() {
+        return fetch(basePlayersURL, {
+            method: 'DELETE'
+        })
     }
 }

@@ -64,6 +64,7 @@
     </div>
   </div>
     <input class="start-game" type="submit" value="Start Game" v-on:click="startGame"/>
+    <button class="start-game" value="Continue Game" v-on:click="continueGame">Continue Game </button>
     <br>
     <a href="https://en.wikibooks.org/wiki/Monopoly/Official_Rules#:~:text=Each%20player%20is%20given%20%241%2C500,personal%20funds%20from%20the%20bank." class="myButton2">Rules</a></p>
     </div>
@@ -100,52 +101,54 @@ export default {
       this.colour = "";
     },
     savePlayer(name, colour) {
-        PlayerService.addPlayer({
-          name: name,
-          colour: colour,
-          wallet: 1500,
-          properties: [],
-          position: 0
-        }).then(addedPlayer => {
-          if (!addedPlayer) {
-            alert("Try again, nerd.");
-          }
-        });
+      PlayerService.addPlayer({
+        name: name,
+        colour: colour,
+        wallet: 1500,
+        properties: [],
+        position: 0
+      }).then(addedPlayer => {
+        if (!addedPlayer) {
+          alert("Try again, nerd.");
+        }
+      });
     },
     startGame() {
-      // TODO: Remove all players first in DB
-      
-      if (this.name1 != "" && this.colour1 != "") {
-        this.savePlayer(this.name1, this.colour1);
-      }
-      if (this.name2 != "" && this.colour2 != "") {
-        this.savePlayer(this.name2, this.colour2);
-      }
-      if (this.name3 != "" && this.colour3 != "") {
-        this.savePlayer(this.name3, this.colour3);
-      }
-      if (this.name4 != "" && this.colour4 != "") {
-        this.savePlayer(this.name4, this.colour4);
-      }
+      PlayerService.deletePlayers()
+      .then(() => {
+        if (this.name1 != "" && this.colour1 != "") {
+          this.savePlayer(this.name1, this.colour1);
+        }
+        if (this.name2 != "" && this.colour2 != "") {
+          this.savePlayer(this.name2, this.colour2);
+        }
+        if (this.name3 != "" && this.colour3 != "") {
+          this.savePlayer(this.name3, this.colour3);
+        }
+        if (this.name4 != "" && this.colour4 != "") {
+          this.savePlayer(this.name4, this.colour4);
+        }
+        eventBus.$emit("start-game");
+      });
+    },
+    continueGame() {
       eventBus.$emit("start-game");
     },
     clearForm() {
-      this.name1 = '';
-      this.name2 = '';
-      this.name3 = '';
-      this.name4 = '';
-      this.colour1 = '';
-      this.colour2 = '';
-      this.colour3 = '';
-      this.colour4 = '';
-
+      this.name1 = "";
+      this.name2 = "";
+      this.name3 = "";
+      this.name4 = "";
+      this.colour1 = "";
+      this.colour2 = "";
+      this.colour3 = "";
+      this.colour4 = "";
     }
   }
 };
 </script>
 
 <style lang="css" scoped>
-
 .top-players {
   display: flex;
 }
@@ -153,9 +156,6 @@ export default {
 .bottom-players {
   display: flex;
 }
-
-
-
 
 /* .h1 {
   font-family: sans-serif;
