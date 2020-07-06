@@ -7,6 +7,7 @@
 
 <script>
 import {eventBus} from "./main"
+import PlayerService from "./services/PlayerService"
 import PlayerForm from "./components/PlayerForm";
 import BoardGrid from "./components/BoardGrid";
 
@@ -25,8 +26,15 @@ export default {
   },
   mounted() {
     eventBus.$on("start-game", () => {
-      this.showForm = false;
-      this.showBoardGrid = true;
+      PlayerService.getPlayers()
+      .then(players => {
+        if (players.length > 0) {
+          this.showForm = false;
+          this.showBoardGrid = true;
+        } else {
+          alert("Can't really start a game without any players, or can we?");
+        }
+      })
     })
   },
   methods: {
