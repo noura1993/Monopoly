@@ -111,9 +111,9 @@ export default {
     
     eventBus.$on('buy-property', () => {
       const propertyIndex = this.players[this.currentPlayerIndex].position; 
-      const property = this.properties[propertyIndex];
+      const property = this.allProperties[propertyIndex];
       this.players[this.currentPlayerIndex].properties.push(property);
-      this.players[this.currentPlayerIndex].wallet -= currentProperty.price;
+      this.players[this.currentPlayerIndex].wallet -= property.price;
     });
     
     eventBus.$on("roll-dice", (rollDiceValue) => {

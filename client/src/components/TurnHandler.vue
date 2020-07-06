@@ -28,7 +28,8 @@ export default {
     computed: {
         diceValue: function () {
             eventBus.$on('roll-dice', (rollDiceValue) => {
-            return rollDiceValue; })
+            return rollDiceValue; 
+            })
         }
     },
     methods: {
