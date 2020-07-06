@@ -1,10 +1,10 @@
 <template>
 <div>
   <div class="turn-handler-container">
-      <h2 >Turn: </h2>
+      <h2 >Turn: {{players[currentPlayerIndex].name}}</h2>
       <hr class="turn-handler-hr">
-      <h3>Total Moves:</h3>
-      <h3>Position:</h3>
+      <h3>Dice Result: {{diceValue}}</h3>
+      <h3>Current Position: {{ properties[players[currentPlayerIndex].position].name }}</h3>
       <button v-on:click="handleBuy" class="turn-handler-btn">Buy</button>
       <button v-on:click="handleRent" class="turn-handler-btn">Pay Rent</button>
       <button v-on:click="handleEndTurn" class="turn-handler-btn">End Turn</button>
@@ -19,27 +19,33 @@ import PlayerService from '../services/PlayerService'
 
 export default {
     name: 'turn-handler',
-    props: ['properties', 'players'],
+    props: ['properties', 'players', 'currentPlayerIndex'],
     data() {
         return {
-            
+            // diceValue: null
         }
     },
-    mounted() {
-        
+    computed: {
+        diceValue: function () {
+            eventBus.$on('roll-dice', (rollDiceValue) => {
+            return rollDiceValue; })
+        }
     },
     methods: {
         handleBuy: function () {
-
+            eventBus.$emit("buy-property");
         },
         handleRent: function () {
 
         },
+        handleDiceRoll: function () {
+            eventBus.$emit("roll-dice");
+        },
         handleEndTurn: function () {
-          eventBus.$emit("next-player");
+            eventBus.$emit("next-player");
         },
         handleBankruptcy: function () {
-            
+            eventBus.$emit("player-bankruptcy")
         }
     }
 
