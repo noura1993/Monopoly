@@ -1,16 +1,27 @@
 <template>
   <div class="roll-dice-container">
-      <button class="dice-btn">Roll Dice</button>
+      <button v-on:click="rollDice" class="dice-btn">Roll Dice</button>
       <button class="dice-btn">Pay Fine</button>
       <button class="dice-btn">Declare Bankruptcy</button>
+      <!-- <button v-on:click="handleDiceRoll" class="turn-handler-btn">Roll Dice</button> -->
   </div>
 </template>
 
 <script>
+import {eventBus} from '../main.js'
 export default {
-
+    name: 'roll-dice',
+    methods: {
+        rollDice: function () {
+            const rollDiceValue = Math.floor(Math.random() * 12) + 2;
+            eventBus.$emit('roll-dice', rollDiceValue);
+        }
+    },
+    mounted() {
+       
+    }
 }
-</script>
+</script>=
 
 <style>
 .roll-dice-container {
