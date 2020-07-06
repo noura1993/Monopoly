@@ -99,10 +99,12 @@ export default {
       .then((properties) => {
         this.allProperties = properties;
       });
+
     PlayerService.getPlayers()
     .then(result => {
       this.players = result;
     });
+
     eventBus.$on('next-player', () => {
       this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
       this.shouldShowRollDice = true;
@@ -152,6 +154,14 @@ export default {
       this.shouldShowTurnHandler = true;
       this.players[this.currentPlayerIndex].position += rollDiceValue;
       this.players[this.currentPlayerIndex].position = this.players[this.currentPlayerIndex].position % 36;
+    });
+
+    eventBus.$on("player-bankruptcy", () => {
+      PlayerService.deletePlayer(this.players[this.currentPlayerIndex]._id)
+        .then(() => {
+          PlayerService.getPlayers()
+            .then((players) => this.players = players)
+        })
     })
   }
 };
