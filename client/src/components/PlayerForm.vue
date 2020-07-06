@@ -91,15 +91,6 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
-      PlayerService.addPlayer(this.$data).then(addedPlayer => {
-        if (!addedPlayer) {
-          alert("Try again, nerd.");
-        }
-      });
-      this.name = "";
-      this.colour = "";
-    },
     savePlayer(name, colour) {
       PlayerService.addPlayer({
         name: name,
