@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
     <roll-dice v-if="showRollDice"/>
-    <turn-handler v-if="showTurnHandler"/>
+    <turn-handler :properties="properties" :players="players" v-if="showTurnHandler"/>
     <div class="player player1">
       <player-info :player="this.players[0]"/>
     </div>
@@ -59,6 +59,7 @@ import RollDice from './RollDice';
 import TurnHandler from './TurnHandler';
 import PlayerInfo from './PlayerInfo';
 import PropertyInfo from './PropertyInfo';
+import { eventBus } from '@/main';
 
 export default {
   name: "board-grid",
@@ -69,8 +70,9 @@ export default {
       leftProperties: [],
       rightProperties: [],
       bottomProperties: [],
-      showRollDice: true,
-      showTurnHandler: false
+      showRollDice: false,
+      showTurnHandler: true,
+      currentPlayerIndex: 0
     }
   },
   components: {
@@ -90,6 +92,12 @@ export default {
     PlayerService.getPlayers()
     .then(result => {
       this.players = result;
+    })
+    eventBus.$on('next-player', () => {
+      this.currentPlayerIndex += 1;
+      if(this.currentPlayerIndex === this.players.length) {
+        this.currentPlayerIndex = 0;
+      }
     })
   }
 };

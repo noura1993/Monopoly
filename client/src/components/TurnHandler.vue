@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="turn-handler-container">
-      <h2>Turn:</h2>
+      <h2 >Turn: </h2>
       <hr class="turn-handler-hr">
       <h3>Total Moves:</h3>
       <h3>Position:</h3>
@@ -14,8 +14,20 @@
 </template>
 
 <script>
+import {eventBus} from '../main.js'
+import PlayerService from '../services/PlayerService'
+
 export default {
-    props: ['players', 'properties'],
+    name: 'turn-handler',
+    props: ['properties', 'players'],
+    data() {
+        return {
+            
+        }
+    },
+    mounted() {
+        
+    },
     methods: {
         handleBuy: function () {
 
@@ -24,7 +36,7 @@ export default {
 
         },
         handleEndTurn: function () {
-
+          eventBus.$emit("next-player");
         },
         handleBankruptcy: function () {
             
