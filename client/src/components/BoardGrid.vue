@@ -103,25 +103,34 @@ export default {
     .then(result => {
       this.players = result;
     });
-    eventBus.$on('next-player', () => {
-      this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
-      this.shouldShowRollDice = true;
-      this.shouldShowTurnHandler = false;
-    });
-    
-    eventBus.$on('buy-property', () => {
+
+    eventBus.$on("buy-property", () => {
       const propertyIndex = this.players[this.currentPlayerIndex].position; 
       const property = this.allProperties[propertyIndex];
       this.players[this.currentPlayerIndex].properties.push(property);
       this.players[this.currentPlayerIndex].wallet -= property.price;
     });
     
+    eventBus.$on("pay-rent", () => {
+      const propertyIndex = this.players[this.currentPlayerIndex].position; 
+      const property = this.allProperties[propertyIndex];
+      this.players[this.currentPlayerIndex].wallet -= property.rent_value;
+      let owner = this.players.find( player => player.properties.includes(property));
+      owner.wallet += property.rent_value;
+    });
+ 
     eventBus.$on("roll-dice", (rollDiceValue) => {
       this.shouldShowRollDice = false;
       this.shouldShowTurnHandler = true;
       this.players[this.currentPlayerIndex].position += rollDiceValue;
       this.players[this.currentPlayerIndex].position = this.players[this.currentPlayerIndex].position % 36;
-    })
+    });
+
+    eventBus.$on("next-player", () => {
+      this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+      this.shouldShowRollDice = true;
+      this.shouldShowTurnHandler = false;
+    });
   }
 };
 </script>

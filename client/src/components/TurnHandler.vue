@@ -22,7 +22,6 @@ export default {
     props: ['properties', 'players', 'currentPlayerIndex'],
     data() {
         return {
-            // diceValue: null
         }
     },
     computed: {
@@ -37,7 +36,7 @@ export default {
             eventBus.$emit("buy-property");
         },
         handleRent: function () {
-
+            eventBus.$emit("pay-rent");
         },
         handleDiceRoll: function () {
             eventBus.$emit("roll-dice");
