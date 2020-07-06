@@ -108,7 +108,7 @@ export default {
       const propertyIndex = this.players[this.currentPlayerIndex].position; 
       const property = this.allProperties[propertyIndex];
       this.players[this.currentPlayerIndex].properties.push(property);
-      this.players[this.currentPlayerIndex].wallet -= property.price;
+      this.players[this.currentPlayerIndex].wallet -= property.value;
     });
     
     eventBus.$on("pay-rent", () => {
