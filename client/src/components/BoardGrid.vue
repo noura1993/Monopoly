@@ -3,16 +3,16 @@
     <roll-dice v-if="shouldShowRollDice"/>
     <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" v-if="shouldShowTurnHandler"/>
     <div class="player player1">
-      <player-info :player="this.players[0]"/>
+      <player-info :players="players" :player="this.players[0]"/>
     </div>
     <div class="player player2">
-      <player-info :player="this.players[1]"/>
+      <player-info players="players" :player="this.players[1]"/>
     </div>
      <div class="player player3">
-      <player-info :player="this.players[2]"/>
+      <player-info players="players" :player="this.players[2]"/>
     </div>
     <div class="player player4">
-      <player-info :player="this.players[3]"/>
+      <player-info players="players" :player="this.players[3]"/>
     </div>
       <div class="board">
         
@@ -157,6 +157,7 @@ export default {
     });
 
     eventBus.$on("player-bankruptcy", () => {
+      
       PlayerService.deletePlayer(this.players[this.currentPlayerIndex]._id)
         .then(() => {
           PlayerService.getPlayers()
