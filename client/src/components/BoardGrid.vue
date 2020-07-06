@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
-    <!-- <roll-dice/> -->
-    <turn-handler/>
+    <roll-dice v-if="showRollDice"/>
+    <turn-handler v-if="showTurnHandler"/>
     <div class="player player1">
       <player-info :player="this.players[0]"/>
     </div>
@@ -68,7 +68,9 @@ export default {
       topProperties: [],
       leftProperties: [],
       rightProperties: [],
-      bottomProperties: []
+      bottomProperties: [],
+      showRollDice: true,
+      showTurnHandler: false
     }
   },
   components: {
@@ -105,6 +107,8 @@ export default {
 
 .player {
   border: 1px solid black; 
+  text-align: left;
+  font-size: 20px;
 }
 
 .player1 {

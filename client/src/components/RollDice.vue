@@ -14,7 +14,7 @@ export default {
 
 <style>
 .roll-dice-container {
-    position: relative;
+    position: absolute;
     left: 50%;
     transform:translate(-50%, -50%);
     top: 50%;
