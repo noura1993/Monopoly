@@ -20,7 +20,7 @@
       <div class="corner-container">Free Parking</div>
     </div>
     <div class="row top-row">
-      <div class="cell top-property property-container" v-for="property in top_properties" :key="property.name">
+      <div class="cell top-property property-container" v-for="property in topProperties" :key="property.name">
           <property-info :property="property"/>
       </div>
     </div>
@@ -28,13 +28,13 @@
       <div class="corner-container">Go To Jail</div>
     </div>
     <div class="column left-column">
-        <div class="cell left-property property-container" v-for="property in left_properties" :key="property.name">
+        <div class="cell left-property property-container" v-for="property in leftProperties" :key="property.name">
         <property-info :property="property"/>
       </div>
     </div>
     <div class="center"></div>
     <div class="column right-column">
-        <div class="cell right-property property-container" v-for="property in right_properties" :key="property.name">
+        <div class="cell right-property property-container" v-for="property in rightProperties" :key="property.name">
         <property-info :property="property"/>
       </div>
     </div>
@@ -42,7 +42,7 @@
       <div class="corner-container">Go</div>
     </div>
     <div class="row bottom-row">
-       <div class="cell bottom-property property-container" v-for="property in bottom_properties" :key="property.name">
+       <div class="cell bottom-property property-container" v-for="property in bottomProperties" :key="property.name">
         <property-info :property="property"/>
       </div>
     </div>
@@ -65,10 +65,10 @@ export default {
   data() {
     return {
       players: [],
-      top_properties: [],
-      left_properties: [],
-      right_properties: [],
-      bottom_properties: []
+      topProperties: [],
+      leftProperties: [],
+      rightProperties: [],
+      bottomProperties: []
     }
   },
   components: {
@@ -77,13 +77,13 @@ export default {
     "player-info": PlayerInfo,
     "property-info":PropertyInfo
   },
-  beforeCreate() {
+  mounted() {
     PlayerService.getProperties()
       .then((properties) => {
-        this.top_properties = properties.splice(0, 8);
-        this.left_properties = properties.splice(0, 8);
-        this.right_properties = properties.splice(0, 8);
-        this.bottom_properties = properties.splice(0, 8);
+        this.topProperties = properties.splice(0, 8);
+        this.leftProperties = properties.splice(0, 8);
+        this.rightProperties = properties.splice(0, 8);
+        this.bottomProperties = properties.splice(0, 8);
       });
     PlayerService.getPlayers()
     .then(result => {
