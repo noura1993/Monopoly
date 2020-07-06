@@ -2,7 +2,7 @@
   <div class="board-wrapper">
     <roll-dice v-if="shouldShowRollDice"/>
     <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" v-if="shouldShowTurnHandler"/>
-    <div class="player player1">
+    <!-- <div class="player player1">
       <player-info :players="players" :player="this.players[0]"/>
     </div>
     <div class="player player2">
@@ -13,6 +13,9 @@
     </div>
     <div class="player player4">
       <player-info :players="players" :player="this.players[3]"/>
+    </div> -->
+    <div v-for="(player, thisIndex) in players" :key="thisIndex" :class="playerClass(thisIndex)">
+      <player-info :players="players" :player="players[thisIndex]"/>
     </div>
       <div class="board">
         
@@ -93,6 +96,11 @@ export default {
     "turn-handler": TurnHandler,
     "player-info": PlayerInfo,
     "property-info":PropertyInfo
+  },
+  methods: {
+    playerClass: function (thisPlayerIndex) {
+      return `player player${thisPlayerIndex + 1}`;
+    }
   },
   mounted() {
     PlayerService.getProperties()
