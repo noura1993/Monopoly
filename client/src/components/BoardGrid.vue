@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
     <roll-dice v-if="showRollDice"/>
-    <turn-handler :properties="properties" :players="players" v-if="showTurnHandler"/>
+    <turn-handler :properties="properties" :players="players" :currentPlayerIndex="currentPlayerIndex" v-if="showTurnHandler"/>
     <div class="player player1">
       <player-info :player="this.players[0]"/>
     </div>

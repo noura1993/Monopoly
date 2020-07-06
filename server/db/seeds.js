@@ -3,6 +3,12 @@ db.dropDatabase()
 
 db.properties.insertMany([
     {
+        "name": "Go",
+        "colour": "",
+        "value": 0,
+        "rent_value": 0
+    },
+    {
         "name": "Ahmed Station",
         "colour": "red",
         "value": 50,
@@ -49,6 +55,12 @@ db.properties.insertMany([
         "colour": "green",
         "value": 50,
         "rent_value": 10
+    },
+    {
+        "name": "JAIL",
+        "colour": "",
+        "value": 0,
+        "rent_value": 0
     },
     {
         "name": "Alex Chance Cards",
@@ -99,6 +111,12 @@ db.properties.insertMany([
         "rent_value": 5
     },
     {
+        "name": "Free Parking",
+        "colour": "",
+        "value": 0,
+        "rent_value": 0
+    },
+    {
         "name": "Janey Street",
         "colour": "orange",
         "value": 50,
@@ -145,6 +163,12 @@ db.properties.insertMany([
         "colour": "black",
         "value": 50,
         "rent_value": 5
+    },
+    {
+        "name": "Go To Jail",
+        "colour": "",
+        "value": 0,
+        "rent_value": 0
     },
     {
         "name": "Granton",
