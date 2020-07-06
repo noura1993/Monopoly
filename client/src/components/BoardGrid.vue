@@ -6,13 +6,13 @@
       <player-info :players="players" :player="this.players[0]"/>
     </div>
     <div class="player player2">
-      <player-info players="players" :player="this.players[1]"/>
+      <player-info :players="players" :player="this.players[1]"/>
     </div>
      <div class="player player3">
-      <player-info players="players" :player="this.players[2]"/>
+      <player-info :players="players" :player="this.players[2]"/>
     </div>
     <div class="player player4">
-      <player-info players="players" :player="this.players[3]"/>
+      <player-info :players="players" :player="this.players[3]"/>
     </div>
       <div class="board">
         
@@ -148,6 +148,17 @@ export default {
             .then((players) => this.players = players)
         })
     });
+
+    eventBus.$on('player-sells-property', (eventBusObject) => {
+      eventBusObject.playerSelling.wallet += eventBusObject.sellValue;
+      const index = eventBusObject.playerSelling.properties.findIndex((property) => property._id === eventBusObject.propertyBeingSold._id);
+      eventBusObject.playerSelling.properties.splice(index, 1);
+      PlayerService.updatePlayer(eventBusObject.playerSelling);
+
+      eventBusObject.playerToSellTo.wallet -= eventBusObject.sellValue;
+      eventBusObject.playerToSellTo.properties.push(eventBusObject.propertyBeingSold);
+      PlayerService.updatePlayer(eventBusObject.playerToSellTo);
+    })
     
     eventBus.$on("roll-dice", (rollDiceValue) => {
       this.shouldShowRollDice = false;
