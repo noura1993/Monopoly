@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
-    <roll-dice v-if="showRollDice"/>
-    <turn-handler :properties="properties" :players="players" :currentPlayerIndex="currentPlayerIndex" v-if="showTurnHandler"/>
+    <roll-dice v-if="shouldShowRollDice"/>
+    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" v-if="shouldShowTurnHandler"/>
     <div class="player player1">
       <player-info :player="this.players[0]"/>
     </div>
@@ -16,39 +16,47 @@
     </div>
       <div class="board">
         
-    <div class="corner top-left-corner">
-      <div class="corner-container">Free Parking</div>
-    </div>
+      <div class="corner top-left-corner" v-for="index in freeParking" :key="index">
+      <property-info :property="allProperties[index]"/>
+      </div>
+
     <div class="row top-row">
-      <div class="cell top-property property-container" v-for="property in topProperties" :key="property.name">
-          <property-info :property="property"/>
+      <div class="cell top-property property-container" v-for="index in topArray" :key="index">
+          <property-info :property="allProperties[index]"/>
       </div>
     </div>
-    <div class="corner top-right-corner">
-      <div class="corner-container">Go To Jail</div>
-    </div>
+
+    <div class="corner bottom-right-corner" v-for="index in go" :key="index">
+      <property-info :property="allProperties[index]"/>
+      </div>
+
+
+        <div class="corner top-right-corner" v-for="index in goToJail" :key="index">
+          <property-info :property="allProperties[index]"/>
+      </div>
+
+          <div class="corner bottom-left-corner" v-for="index in jail" :key="index">
+          <property-info :property="allProperties[index]"/>
+      </div>
+ 
     <div class="column left-column">
-        <div class="cell left-property property-container" v-for="property in leftProperties" :key="property.name">
-        <property-info :property="property"/>
+        <div class="cell left-property property-container" v-for="index in leftArray" :key="index">
+        <property-info :property="allProperties[index]"/>
       </div>
     </div>
     <div class="center"></div>
     <div class="column right-column">
-        <div class="cell right-property property-container" v-for="property in rightProperties" :key="property.name">
-        <property-info :property="property"/>
+        <div class="cell right-property property-container" v-for="index in rightArray" :key="index">
+        <property-info :property="allProperties[index]"/>
       </div>
     </div>
-    <div class="corner bottom-right-corner">
-      <div class="corner-container">Go</div>
-    </div>
+ 
     <div class="row bottom-row">
-       <div class="cell bottom-property property-container" v-for="property in bottomProperties" :key="property.name">
-        <property-info :property="property"/>
+       <div class="cell bottom-property property-container" v-for="index in bottomArray" :key="index">
+        <property-info :property="allProperties[index]"/>
       </div>
     </div>
-    <div class="corner bottom-left-corner">
-      <div class="corner-container">In Jail/Just Visiting</div>
-    </div>
+ 
   </div>
   </div>
 </template>
@@ -66,12 +74,17 @@ export default {
   data() {
     return {
       players: [],
-      topProperties: [],
-      leftProperties: [],
-      rightProperties: [],
-      bottomProperties: [],
-      showRollDice: false,
-      showTurnHandler: true,
+      allProperties: [],
+      go: [0],
+      jail: [9],
+      freeParking: [18],
+      goToJail: [27],
+      bottomArray: [8, 7, 6, 5, 4, 3, 2, 1],
+      leftArray: [35, 34, 33, 32, 31, 30, 29, 28],
+      topArray: [26, 25, 24, 23, 22, 21, 20, 19],
+      rightArray: [17, 16, 15, 14, 13, 12, 11, 10],
+      shouldShowRollDice: true,
+      shouldShowTurnHandler: false,
       currentPlayerIndex: 0
     }
   },
@@ -84,20 +97,30 @@ export default {
   mounted() {
     PlayerService.getProperties()
       .then((properties) => {
-        this.topProperties = properties.splice(0, 8);
-        this.leftProperties = properties.splice(0, 8);
-        this.rightProperties = properties.splice(0, 8);
-        this.bottomProperties = properties.splice(0, 8);
+        this.allProperties = properties;
       });
     PlayerService.getPlayers()
     .then(result => {
       this.players = result;
-    })
+    });
     eventBus.$on('next-player', () => {
-      this.currentPlayerIndex += 1;
-      if(this.currentPlayerIndex === this.players.length) {
-        this.currentPlayerIndex = 0;
-      }
+      this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+      this.shouldShowRollDice = true;
+      this.shouldShowTurnHandler = false;
+    });
+    
+    eventBus.$on('buy-property', () => {
+      const propertyIndex = this.players[this.currentPlayerIndex].position; 
+      const property = this.properties[propertyIndex];
+      this.players[this.currentPlayerIndex].properties.push(property);
+      this.players[this.currentPlayerIndex].wallet -= currentProperty.price;
+    });
+    
+    eventBus.$on("roll-dice", (rollDiceValue) => {
+      this.shouldShowRollDice = false;
+      this.shouldShowTurnHandler = true;
+      this.players[this.currentPlayerIndex].position += rollDiceValue;
+      this.players[this.currentPlayerIndex].position = this.players[this.currentPlayerIndex].position % 36;
     })
   }
 };
