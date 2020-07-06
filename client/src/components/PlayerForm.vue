@@ -30,12 +30,10 @@ export default {
       wallet: 1500,
       properties: [],
       position: 0
-      // dice: null
     };
   },
   methods: {
     handleSubmit() {
-      // eventBus.$emit('submit-player', this.$data);
       PlayerService.addPlayer(this.$data)
         .then((addedPlayer) => {
           if (!addedPlayer) {
