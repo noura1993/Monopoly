@@ -1,22 +1,18 @@
 <template>
   <div class="board-wrapper">
-    <!-- <roll-dice/> -->
-    <turn-handler/>
+    <roll-dice v-if="showRollDice"/>
+    <turn-handler v-if="showTurnHandler"/>
     <div class="player player1">
-      <div>Player1</div>
-      <hr>
+      <player-info :player="this.players[0]"/>
     </div>
     <div class="player player2">
-      <div>Player2</div>
-      <hr>
+      <player-info :player="this.players[1]"/>
     </div>
      <div class="player player3">
-      <div>Player3</div>
-      <hr>
+      <player-info :player="this.players[2]"/>
     </div>
     <div class="player player4">
-      <div>Player4</div>
-      <hr>
+      <player-info :player="this.players[3]"/>
     </div>
       <div class="board">
         
@@ -24,38 +20,30 @@
       <div class="corner-container">Free Parking</div>
     </div>
     <div class="row top-row">
-      <div class="cell top-property property-container" v-for="(property, index) in top_properties" :key="index">
-          <div class="property-color" v-bind:style="{'background-color': 'red' }"></div>
-          <div class="property-name">{{property.name}}</div>
-          <div class="property-price">Price: {{property.value}}</div>
+      <div class="cell top-property property-container" v-for="property in topProperties" :key="property.name">
+          <property-info :property="property"/>
       </div>
     </div>
     <div class="corner top-right-corner">
       <div class="corner-container">Go To Jail</div>
     </div>
     <div class="column left-column">
-        <div class="cell left-property property-container" v-for="(property, index) in left_properties" :key="index">
-          <div class="property-color" v-bind:style="{'background-color': 'yellow' }"></div>
-          <div class="property-name">{{property.name}}</div>
-          <div class="property-price">Price: {{property.value}}</div>
+        <div class="cell left-property property-container" v-for="property in leftProperties" :key="property.name">
+        <property-info :property="property"/>
       </div>
     </div>
     <div class="center"></div>
     <div class="column right-column">
-        <div class="cell right-property property-container" v-for="(property, index) in right_properties" :key="index">
-          <div class="property-color" v-bind:style="{'background-color': 'green' }"></div>
-          <div class="property-name">{{property.name}}</div>
-          <div class="property-price">Price: {{property.value}}</div>
+        <div class="cell right-property property-container" v-for="property in rightProperties" :key="property.name">
+        <property-info :property="property"/>
       </div>
     </div>
     <div class="corner bottom-right-corner">
       <div class="corner-container">Go</div>
     </div>
     <div class="row bottom-row">
-       <div class="cell bottom-property property-container" v-for="(property, index) in bottom_properties" :key="index">
-          <div class="property-color" v-bind:style="{'background-color': 'blue' }"></div>
-          <div class="property-name">{{property.name}}</div>
-          <div class="property-price">Price: {{property.value}}</div>
+       <div class="cell bottom-property property-container" v-for="property in bottomProperties" :key="property.name">
+        <property-info :property="property"/>
       </div>
     </div>
     <div class="corner bottom-left-corner">
@@ -69,28 +57,40 @@
 import PlayerService from '../services/PlayerService'
 import RollDice from './RollDice';
 import TurnHandler from './TurnHandler';
+import PlayerInfo from './PlayerInfo';
+import PropertyInfo from './PropertyInfo';
 
 export default {
-  components: {
-    "roll-dice": RollDice,
-    "turn-handler": TurnHandler
-  },
+  name: "board-grid",
   data() {
     return {
-      top_properties: [],
-      left_properties: [],
-      right_properties: [],
-      bottom_properties: []
+      players: [],
+      topProperties: [],
+      leftProperties: [],
+      rightProperties: [],
+      bottomProperties: [],
+      showRollDice: true,
+      showTurnHandler: false
     }
+  },
+  components: {
+    "roll-dice": RollDice,
+    "turn-handler": TurnHandler,
+    "player-info": PlayerInfo,
+    "property-info":PropertyInfo
   },
   mounted() {
     PlayerService.getProperties()
       .then((properties) => {
-        this.top_properties = properties.splice(0, 8);
-        this.left_properties = properties.splice(0, 8);
-        this.right_properties = properties.splice(0, 8);
-        this.bottom_properties = properties.splice(0, 8);
-      })
+        this.topProperties = properties.splice(0, 8);
+        this.leftProperties = properties.splice(0, 8);
+        this.rightProperties = properties.splice(0, 8);
+        this.bottomProperties = properties.splice(0, 8);
+      });
+    PlayerService.getPlayers()
+    .then(result => {
+      this.players = result;
+    })
   }
 };
 </script>
@@ -107,6 +107,8 @@ export default {
 
 .player {
   border: 1px solid black; 
+  text-align: left;
+  font-size: 20px;
 }
 
 .player1 {
@@ -213,21 +215,6 @@ export default {
 .property-container {
     background: white;
     border: 1px solid black;
-}
-
-.property-color {
-    height: 15%;
-}
-
-.property-name {
-    padding-top: 10%;
-    margin: auto;
-    height: 80px;
-    width: 80px;
-}
-
-.property-price {
-    padding-bottom: 10%;
 }
 
 .left-property {
