@@ -16,13 +16,25 @@ export default {
   data() {
     return {
       showForm: true,
-      showBoardGrid: false
+      showBoardGrid: false,
+      players: []
 
     }
   },
   components: {
     "board-grid": BoardGrid,
     "player-form": PlayerForm
+  },
+  methods: {
+    // checkPlayerArray: function () {
+    //   if (this.players.length > 0) {
+    //     this.showForm = false;
+    //     this.showBoardGrid = true;
+    //   }
+    //   else {
+    //     alert("Can't really start a game without any players, or can we?");
+    //   }
+    // }
   },
   mounted() {
     eventBus.$on("start-game", () => {
@@ -34,6 +46,7 @@ export default {
         } else {
           alert("Can't really start a game without any players, or can we?");
         }
+        this.players = players
       })
     })
   },

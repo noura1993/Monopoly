@@ -1,5 +1,5 @@
 <template>
-  <div class="property-info">
+  <div class="property-info" v-if="property">
     <div class="property-color" v-bind:style="{'background-color': property.colour }"></div>
       <div class="property-name">{{property.name}}</div>
       <div class="property-price">Price: £{{property.value}}</div>

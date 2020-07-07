@@ -6,7 +6,8 @@
     <div v-for="(player, thisIndex) in players" :key="thisIndex" :class="playerClass(thisIndex)">
       <player-info :players="players" :player="players[thisIndex]"/>
     </div>
-      <div class="board">
+
+    <div class="board">
         
       <div class="corner top-left-corner" v-for="index in freeParking" :key="index">
       <property-info :property="allProperties[index]"/>
