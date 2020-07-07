@@ -77,7 +77,8 @@ export default {
       rightArray: [17, 16, 15, 14, 13, 12, 11, 10],
       shouldShowRollDice: true,
       shouldShowTurnHandler: false,
-      currentPlayerIndex: 0
+      currentPlayerIndex: 0,
+      diceValue: 0
     }
   },
   components: {
@@ -157,10 +158,22 @@ export default {
       PlayerService.updatePlayer(eventBusObject.playerToSellTo);
     })
     
+    eventBus.$on("pay-rent", () => {
+      const propertyIndex = this.players[this.currentPlayerIndex].position; 
+      const property = this.allProperties[propertyIndex];
+      this.players[this.currentPlayerIndex].wallet -= property.rent_value;
+      let owner = this.players.find( player => player.properties.includes(property));
+      owner.wallet += property.rent_value;
+    });
+ 
     eventBus.$on("roll-dice", (rollDiceValue) => {
+      this.diceValue = rollDiceValue;
       this.shouldShowRollDice = false;
       this.shouldShowTurnHandler = true;
       this.players[this.currentPlayerIndex].position += rollDiceValue;
+      if(this.players[this.currentPlayerIndex].position >= 36) {
+        this.players[this.currentPlayerIndex].wallet += 200;
+      }
       this.players[this.currentPlayerIndex].position = this.players[this.currentPlayerIndex].position % 36;
     });
 

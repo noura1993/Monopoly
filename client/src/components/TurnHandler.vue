@@ -19,16 +19,10 @@ import PlayerService from '../services/PlayerService'
 
 export default {
     name: 'turn-handler',
-    props: ['properties', 'players', 'currentPlayerIndex'],
+    props: ['properties', 'players', 'currentPlayerIndex', 'diceValue'],
     data() {
         return {
-            // diceValue: null
-        }
-    },
-    computed: {
-        diceValue: function () {
-            eventBus.$on('roll-dice', (rollDiceValue) => {
-            return rollDiceValue; })
+            rollDiceValue: 0
         }
     },
     methods: {
@@ -36,17 +30,21 @@ export default {
             eventBus.$emit("buy-property");
         },
         handleRent: function () {
-
-        },
-        handleDiceRoll: function () {
-            eventBus.$emit("roll-dice");
+            eventBus.$emit("pay-rent");
         },
         handleEndTurn: function () {
             eventBus.$emit("next-player");
         },
         handleBankruptcy: function () {
-            eventBus.$emit("player-bankruptcy")
+            eventBus.$emit("player-bankruptcy");
         }
+    },
+    mounted() {
+        if(this.players[this.currentPlayerIndex].position === 27) {
+            alert("Uhmmm ... kind of bad news?? You are going to jail!")
+            eventBus.$emit("put-in-jail")
+        }
+
     }
 
 }
