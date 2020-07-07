@@ -136,6 +136,11 @@ export default {
       this.shouldShowRollDice = true;
       this.shouldShowTurnHandler = false;
     });
+
+    eventBus.$on("put-in-jail", () => {
+      this.players[this.currentPlayerIndex].position = 9;
+      this.players[this.currentPlayerIndex].isInJail = true;
+    });
   }
 };
 </script>

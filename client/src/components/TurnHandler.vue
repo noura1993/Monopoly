@@ -36,8 +36,15 @@ export default {
             eventBus.$emit("next-player");
         },
         handleBankruptcy: function () {
-            eventBus.$emit("player-bankruptcy")
+            eventBus.$emit("player-bankruptcy");
         }
+    },
+    mounted() {
+        if(this.players[this.currentPlayerIndex].position === 27) {
+            alert("Uhmmm ... kind of bad news?? You are going to jail!")
+            eventBus.$emit("put-in-jail")
+        }
+
     }
 
 }

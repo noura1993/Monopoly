@@ -12,7 +12,8 @@ export default {
     name: 'roll-dice',
     methods: {
         rollDice: function() {
-            const rollDiceValue = Math.floor(Math.random() * 11) + 2;
+            // const rollDiceValue = Math.floor(Math.random() * 11) + 2;
+            const rollDiceValue = 27;
             eventBus.$emit("roll-dice", rollDiceValue);
             eventBus.$emit("roll-dice-value", rollDiceValue);
         }
