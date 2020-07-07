@@ -207,6 +207,7 @@ export default {
     eventBus.$on("pay-fine", () => {
       if (this.players[this.currentPlayerIndex].wallet >= 50) {
         this.players[this.currentPlayerIndex].wallet -= 50;
+        this.players[this.currentPlayerIndex].isInJail = false;
       }
       else {
         alert("You're very broke.")
