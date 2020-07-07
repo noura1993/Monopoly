@@ -3,7 +3,6 @@
       <button v-on:click="rollDice" class="dice-btn">Roll Dice</button>
       <button class="dice-btn">Pay Fine</button>
       <button class="dice-btn">Declare Bankruptcy</button>
-      <!-- <button v-on:click="handleDiceRoll" class="turn-handler-btn">Roll Dice</button> -->
   </div>
 </template>
 
