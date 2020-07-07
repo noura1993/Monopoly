@@ -80,9 +80,6 @@ export default {
       shouldShowTurnHandler: false,
       currentPlayerIndex: 0,
       diceValue: 0
-      // disableBuy: false,
-      // disableRent: false,
-      // disableEndTurn: false
     }
   },
   components: {
@@ -131,8 +128,6 @@ export default {
 
       this.players[this.currentPlayerIndex].properties.forEach((ownedProperty) => {
         if (ownedProperty._id === property._id) {
-          // this.disableRent = true;
-          // this.disableBuy = true;
           alert(`${this.players[this.currentPlayerIndex].name}: You already have ${property.name} purchased.`);
           exitCondition = true;
         }
@@ -142,8 +137,6 @@ export default {
       this.players.forEach((player) => {
         player.properties.forEach((playerProperty) => {
           if (playerProperty._id === property._id) {
-            // this.disableEndTurn = true;
-            // this.disableBuy = true;
             alert(`${this.players[this.currentPlayerIndex].name}: Sorry, this is property of ${player.name}. You need to pay the rent.`)
             exitCondition = true;
           }
