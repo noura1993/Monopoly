@@ -64,7 +64,7 @@
       </div>
     </div>
   </div>
-    <input class="start-game" type="submit" value="Start Game" v-on:click="startGame"/>
+    <input class="start-game" type="submit" value="Start Game"/>
     </div>
   </form>
   <button class="start-game" value="Continue Game" v-on:click="continueGame">Continue Game </button>
