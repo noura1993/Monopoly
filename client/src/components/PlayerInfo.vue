@@ -14,9 +14,11 @@
         </select>
         <input type="number" v-model.number="sellValue" placeholder="Sell value...">
         <button type="submit">Sell {{propertyBeingSold.name}}</button>
+        <p></p>
+        <a v-on:click="handleCancel" href="#">Cancel</a>
         </form>
       </ul>
-      </div>
+    </div>
   </div>
 </template>
 
@@ -50,6 +52,10 @@ export default {
           'sellValue': this.sellValue
         })
         alert(`${this.playerSelling.name}: You've sold ${this.propertyBeingSold.name} to ${this.playerToSellTo.name}.`)
+        this.dropdownCondition = false;
+      },
+
+      handleCancel: function () {
         this.dropdownCondition = false;
       }
     }

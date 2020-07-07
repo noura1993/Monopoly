@@ -26,15 +26,15 @@ export default {
     "player-form": PlayerForm
   },
   methods: {
-    // checkPlayerArray: function () {
-    //   if (this.players.length > 0) {
-    //     this.showForm = false;
-    //     this.showBoardGrid = true;
-    //   }
-    //   else {
-    //     alert("Can't really start a game without any players, or can we?");
-    //   }
-    // }
+    checkPlayerArray: function () {
+      if (this.players.length > 0) {
+        this.showForm = false;
+        this.showBoardGrid = true;
+      }
+      else {
+        alert("Can't really start a game without any players, or can we?");
+      }
+    }
   },
   mounted() {
     eventBus.$on("start-game", () => {
@@ -62,9 +62,6 @@ html {
 
 body {
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 </style>
