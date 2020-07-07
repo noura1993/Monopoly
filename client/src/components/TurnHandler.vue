@@ -19,7 +19,6 @@ import PlayerService from '../services/PlayerService'
 
 export default {
     name: 'turn-handler',
-    // props: ['properties', 'players', 'currentPlayerIndex', 'diceValue', 'disableBuy', 'disableRent', 'disableEndTurn'],
     props: ['properties', 'players', 'currentPlayerIndex', 'diceValue'],
     data() {
         return {
