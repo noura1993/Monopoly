@@ -7,7 +7,8 @@
 </template>
 
 <script>
-import {eventBus} from '../main.js'
+import {eventBus} from '../main.js';
+
 export default {
     name: 'roll-dice',
     methods: {
@@ -17,6 +18,9 @@ export default {
         },
         declareBankruptcy: function () {
             eventBus.$emit("player-bankruptcy");
+        },
+        payFine: function() {
+            eventBus.$emit("pay-fine");
         }
     },
     mounted() {

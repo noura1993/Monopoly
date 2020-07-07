@@ -201,7 +201,28 @@ export default {
           PlayerService.getPlayers()
             .then((players) => this.players = players)
         })
-    })
+    });
+
+    eventBus.$on("pay-fine", () => {
+      if (this.players[this.currentPlayerIndex].wallet >= 50) {
+        this.players[this.currentPlayerIndex].wallet -= 50;
+      }
+      else {
+        alert("You're very broke.")
+      }
+        
+      PlayerService.updatePlayer(this.players[this.currentPlayerIndex])
+        .then(() => {
+          PlayerService.getPlayers()
+            .then((players) => this.players = players);
+        })
+    });
+
+    eventBus.$on("put-in-jail", () => {
+      this.players[this.currentPlayerIndex].position = 9;
+      this.players[this.currentPlayerIndex].isInJail = true;
+    });
+
   }
 };
 </script>
