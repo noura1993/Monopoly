@@ -2,18 +2,7 @@
   <div class="board-wrapper">
     <roll-dice v-if="shouldShowRollDice"/>
     <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" v-if="shouldShowTurnHandler"/>
-    <!-- <div class="player player1">
-      <player-info :players="players" :player="this.players[0]"/>
-    </div>
-    <div class="player player2">
-      <player-info :players="players" :player="this.players[1]"/>
-    </div>
-     <div class="player player3">
-      <player-info :players="players" :player="this.players[2]"/>
-    </div>
-    <div class="player player4">
-      <player-info :players="players" :player="this.players[3]"/>
-    </div> -->
+    
     <div v-for="(player, thisIndex) in players" :key="thisIndex" :class="playerClass(thisIndex)">
       <player-info :players="players" :player="players[thisIndex]"/>
     </div>
