@@ -5,8 +5,8 @@
       <hr class="turn-handler-hr">
       <h3>Dice Result: {{diceValue}}</h3>
       <h3>Current Position: {{ properties[players[currentPlayerIndex].position].name }}</h3>
-      <button v-on:click="handleBuy" class="turn-handler-btn">Buy</button>
-      <button v-on:click="handleRent" class="turn-handler-btn">Pay Rent</button>
+      <button :disabled="disableBuy" v-on:click="handleBuy" class="turn-handler-btn">Buy</button>
+      <button :disabled="disableRent" v-on:click="handleRent" class="turn-handler-btn">Pay Rent</button>
       <button v-on:click="handleEndTurn" class="turn-handler-btn">End Turn</button>
       <button v-on:click="handleBankruptcy" class="turn-handler-btn">Declare Bankruptcy</button>
   </div>
@@ -19,7 +19,7 @@ import PlayerService from '../services/PlayerService'
 
 export default {
     name: 'turn-handler',
-    props: ['properties', 'players', 'currentPlayerIndex', 'diceValue'],
+    props: ['properties', 'players', 'currentPlayerIndex', 'diceValue', 'disableBuy', 'disableRent'],
     data() {
         return {
             rollDiceValue: 0
