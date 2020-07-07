@@ -1,4 +1,5 @@
 <template lang="html">
+<div>
 <form v-on:submit.prevent="startGame">
   <div class="form-wrapper">
   <div id="header">
@@ -63,12 +64,13 @@
       </div>
     </div>
   </div>
-    <input class="start-game" type="submit" value="Start Game"/>
-    <button class="start-game" value="Continue Game" v-on:click="continueGame">Continue Game </button>
+    <input class="start-game" type="submit" value="Start Game" v-on:click="startGame"/>
+    </div>
+  </form>
+  <button class="start-game" value="Continue Game" v-on:click="continueGame">Continue Game </button>
     <br>
     <a href="https://en.wikibooks.org/wiki/Monopoly/Official_Rules#:~:text=Each%20player%20is%20given%20%241%2C500,personal%20funds%20from%20the%20bank." class="myButton2">Rules</a></p>
     </div>
-  </form>
 </template>
 
 <script>
@@ -105,8 +107,7 @@ export default {
       });
     },
     startGame() {
-      PlayerService.deletePlayers()
-      .then(() => {
+      PlayerService.deletePlayers().then(() => {
         if (this.name1 != "" && this.colour1 != "") {
           this.savePlayer(this.name1, this.colour1);
         }
