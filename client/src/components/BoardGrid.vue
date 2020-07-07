@@ -10,7 +10,7 @@
     <div class="board">
         
       <div class="corner top-left-corner" v-for="index in freeParking" :key="index">
-      <property-info :property="allProperties[index]"/>
+        <img src="../assets/freeParking.png" width="140" height="150"/>
       </div>
 
     <div class="row top-row">
@@ -20,16 +20,16 @@
     </div>
 
     <div class="corner bottom-right-corner" v-for="index in go" :key="index">
-      <property-info :property="allProperties[index]"/>
+        <img src="../assets/go.gif" width="140" height="140"/>
       </div>
 
 
         <div class="corner top-right-corner" v-for="index in goToJail" :key="index">
-          <property-info :property="allProperties[index]"/>
+          <img src="../assets/goToJail.gif" width="140" height="140"/>
       </div>
 
-          <div class="corner bottom-left-corner" v-for="index in jail" :key="index">
-          <property-info :property="allProperties[index]"/>
+        <div class="corner bottom-left-corner" v-for="index in jail" :key="index">
+          <img src="../assets/inJail.gif" width="140" height="150"/>
       </div>
  
     <div class="column left-column">

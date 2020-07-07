@@ -2,7 +2,7 @@
   <div class="property-info" v-if="property">
     <div class="property-color" v-bind:style="{'background-color': property.colour }"></div>
       <div class="property-name">{{property.name}}</div>
-      <div class="property-price">Price: £{{property.value}}</div>
+      <div class="property-price" >Price: £{{property.value}}</div>
   </div>
 </template>
 
@@ -32,6 +32,10 @@ export default {
 
 .property-price {
     padding-bottom: 10%;
+}
+
+.owned-by {
+  height: 15%;
 }
 
 </style>
