@@ -31,11 +31,6 @@ export default {
     },
     methods: {
         handleBuy: function () {
-            this.players[this.currentPlayerIndex].properties.forEach((playerProperty) => {
-                if (playerProperty._id === this.properties[this.players[this.currentPlayerIndex].position]._id) {
-                        this.disableBuy = true
-                    }
-            })
             this.players.forEach((player) => {
                 player.properties.forEach((playerProperty) => {
                     if (playerProperty._id === this.properties[this.players[this.currentPlayerIndex].position]._id) {
@@ -43,6 +38,12 @@ export default {
                         this.disableEndTurn = true;
                     }
                 })
+            })
+            this.players[this.currentPlayerIndex].properties.forEach((playerProperty) => {
+                if (playerProperty._id === this.properties[this.players[this.currentPlayerIndex].position]._id) {
+                        this.disableBuy = true;
+                        this.disableEndTurn = false;
+                    }
             })
             eventBus.$emit("buy-property");
         },

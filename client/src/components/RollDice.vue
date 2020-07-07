@@ -1,6 +1,6 @@
 <template>
   <div class="roll-dice-container">
-      <button v-on:click="rollDice" class="dice-btn">Roll Dice</button>
+      <button :disabled="disableRollDice" v-on:click="rollDice" class="dice-btn">Roll Dice</button>
       <button v-on:click="payFine" class="dice-btn">Pay Fine</button>
       <button v-on:click="declareBankruptcy" class="dice-btn">Declare Bankruptcy</button>
   </div>
@@ -11,8 +11,17 @@ import {eventBus} from '../main.js';
 
 export default {
     name: 'roll-dice',
+    props: ['properties', 'players', 'currentPlayerIndex'],
+    data() {
+        return {
+            disableRollDice: null
+        }
+    },
     methods: {
         rollDice: function() {
+            if (this.players[this.currentPlayerIndex].position === 9) {
+                this.disableRollDice = true;
+            }
             const rollDiceValue = Math.floor(Math.random() * 11) + 2;
             eventBus.$emit("roll-dice", rollDiceValue);
         },
@@ -24,7 +33,7 @@ export default {
         }
     },
     mounted() {
-       
+       this.disableRollDice = false;
     }
 }
 </script>=
