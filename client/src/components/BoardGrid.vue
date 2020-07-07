@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
     <roll-dice v-if="shouldShowRollDice"/>
-    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" v-if="shouldShowTurnHandler"/>
+    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValue="diceValue" v-if="shouldShowTurnHandler"/>
     <div class="player player1">
       <player-info :player="this.players[0]"/>
     </div>
@@ -85,7 +85,8 @@ export default {
       rightArray: [17, 16, 15, 14, 13, 12, 11, 10],
       shouldShowRollDice: true,
       shouldShowTurnHandler: false,
-      currentPlayerIndex: 0
+      currentPlayerIndex: 0,
+      diceValue: 0
     }
   },
   components: {
@@ -120,6 +121,7 @@ export default {
     });
  
     eventBus.$on("roll-dice", (rollDiceValue) => {
+      this.diceValue = rollDiceValue;
       this.shouldShowRollDice = false;
       this.shouldShowTurnHandler = true;
       this.players[this.currentPlayerIndex].position += rollDiceValue;

@@ -19,16 +19,10 @@ import PlayerService from '../services/PlayerService'
 
 export default {
     name: 'turn-handler',
-    props: ['properties', 'players', 'currentPlayerIndex'],
+    props: ['properties', 'players', 'currentPlayerIndex', 'diceValue'],
     data() {
         return {
-        }
-    },
-    computed: {
-        diceValue: function () {
-            eventBus.$on('roll-dice', (rollDiceValue) => {
-            return rollDiceValue; 
-            })
+            rollDiceValue: 0
         }
     },
     methods: {
@@ -37,9 +31,6 @@ export default {
         },
         handleRent: function () {
             eventBus.$emit("pay-rent");
-        },
-        handleDiceRoll: function () {
-            eventBus.$emit("roll-dice");
         },
         handleEndTurn: function () {
             eventBus.$emit("next-player");
