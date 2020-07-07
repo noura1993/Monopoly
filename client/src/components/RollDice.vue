@@ -1,8 +1,8 @@
 <template>
   <div class="roll-dice-container">
       <button v-on:click="rollDice" class="dice-btn">Roll Dice</button>
-      <button class="dice-btn">Pay Fine</button>
-      <button class="dice-btn">Declare Bankruptcy</button>
+      <button v-on:click="payFine" class="dice-btn">Pay Fine</button>
+      <button v-on:click="declareBankruptcy" class="dice-btn">Declare Bankruptcy</button>
   </div>
 </template>
 
@@ -14,6 +14,9 @@ export default {
         rollDice: function() {
             const rollDiceValue = Math.floor(Math.random() * 11) + 2;
             eventBus.$emit("roll-dice", rollDiceValue);
+        },
+        declareBankruptcy: function () {
+            eventBus.$emit("player-bankruptcy");
         }
     },
     mounted() {

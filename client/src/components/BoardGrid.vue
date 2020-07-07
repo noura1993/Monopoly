@@ -111,6 +111,12 @@ export default {
 
     eventBus.$on('buy-property', () => {  
       const propertyIndex = this.players[this.currentPlayerIndex].position; 
+
+      if (propertyIndex === 0 || propertyIndex === 9 || propertyIndex === 18 || propertyIndex === 27) {
+        alert(`You can't buy this property`);
+        return;
+      }
+
       const property = this.allProperties[propertyIndex];
       let exitCondition = null;
 
@@ -173,7 +179,7 @@ export default {
       })
       owner.wallet += property.rent_value;
 
-      PlayerService.updatePlayer(this.players[this.currentPlayerIndex].wallet);
+      PlayerService.updatePlayer(this.players[this.currentPlayerIndex]);
       PlayerService.updatePlayer(owner);
     });
  
