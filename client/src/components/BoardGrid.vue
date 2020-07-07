@@ -1,6 +1,6 @@
 <template>
   <div class="board-wrapper">
-    <roll-dice v-if="shouldShowRollDice"/>
+    <roll-dice v-if="shouldShowRollDice" :players="players" :currentPlayerIndex="currentPlayerIndex"/>
     <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValue="diceValue" v-if="shouldShowTurnHandler"/>
     
     <div v-for="(player, thisIndex) in players" :key="thisIndex" :class="playerClass(thisIndex)">
