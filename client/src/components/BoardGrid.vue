@@ -1,8 +1,8 @@
 <template>
   <div class="board-wrapper">
     <roll-dice v-if="shouldShowRollDice"/>
-    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValue="diceValue" :disableBuy="disableBuy" :disableRent="disableRent" v-if="shouldShowTurnHandler"/>
-    
+    <!-- <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValue="diceValue" :disableBuy="disableBuy" :disableRent="disableRent" :disableEndTurn="disableEndTurn" v-if="shouldShowTurnHandler"/> -->
+    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValue="diceValue" v-if="shouldShowTurnHandler"/>
     <div v-for="(player, thisIndex) in players" :key="thisIndex" :class="playerClass(thisIndex)">
       <player-info :players="players" :player="players[thisIndex]"/>
     </div>
@@ -79,9 +79,10 @@ export default {
       shouldShowRollDice: true,
       shouldShowTurnHandler: false,
       currentPlayerIndex: 0,
-      diceValue: 0,
-      disableBuy: false,
-      disableRent: false
+      diceValue: 0
+      // disableBuy: false,
+      // disableRent: false,
+      // disableEndTurn: false
     }
   },
   components: {
@@ -130,6 +131,8 @@ export default {
 
       this.players[this.currentPlayerIndex].properties.forEach((ownedProperty) => {
         if (ownedProperty._id === property._id) {
+          // this.disableRent = true;
+          // this.disableBuy = true;
           alert(`${this.players[this.currentPlayerIndex].name}: You already have ${property.name} purchased.`);
           exitCondition = true;
         }
@@ -139,7 +142,9 @@ export default {
       this.players.forEach((player) => {
         player.properties.forEach((playerProperty) => {
           if (playerProperty._id === property._id) {
-            alert(`${this.players[this.currentPlayerIndex].name}: Sorry, this is already owned by ${player.name}`)
+            // this.disableEndTurn = true;
+            // this.disableBuy = true;
+            alert(`${this.players[this.currentPlayerIndex].name}: Sorry, this is property of ${player.name}. You need to pay the rent.`)
             exitCondition = true;
           }
         })
