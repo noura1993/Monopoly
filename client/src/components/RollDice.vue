@@ -11,7 +11,7 @@ import {eventBus} from '../main.js'
 export default {
     name: 'roll-dice',
     methods: {
-        rollDice: function () {
+        rollDice: function() {
             const rollDiceValue = Math.floor(Math.random() * 11) + 2;
             eventBus.$emit("roll-dice", rollDiceValue);
             eventBus.$emit("roll-dice-value", rollDiceValue);

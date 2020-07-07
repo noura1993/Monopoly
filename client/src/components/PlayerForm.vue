@@ -99,7 +99,8 @@ export default {
         colour: colour,
         wallet: 1500,
         properties: [],
-        position: 0
+        position: 0,
+        isInJail: false
       }).then(addedPlayer => {
         if (!addedPlayer) {
           alert("Try again, nerd.");
