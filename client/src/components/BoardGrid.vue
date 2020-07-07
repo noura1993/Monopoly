@@ -112,37 +112,12 @@ export default {
 
     eventBus.$on('buy-property', () => {  
       const propertyIndex = this.players[this.currentPlayerIndex].position; 
-
-      if (propertyIndex === 0 || propertyIndex === 9 || propertyIndex === 18 || propertyIndex === 27) {
-        alert(`You can't buy this property`);
-        return;
-      }
-
       const property = this.allProperties[propertyIndex];
-      let exitCondition = null;
 
       if (this.players[this.currentPlayerIndex].wallet < property.value) {
         alert(`${this.players[this.currentPlayerIndex].name}: You don't have enough funds for ${property.name}`);
         return;
       }
-
-      this.players[this.currentPlayerIndex].properties.forEach((ownedProperty) => {
-        if (ownedProperty._id === property._id) {
-          alert(`${this.players[this.currentPlayerIndex].name}: You already have ${property.name} purchased.`);
-          exitCondition = true;
-        }
-      })
-      if (exitCondition) { return; }
-
-      this.players.forEach((player) => {
-        player.properties.forEach((playerProperty) => {
-          if (playerProperty._id === property._id) {
-            alert(`${this.players[this.currentPlayerIndex].name}: Sorry, this is already owned by ${player.name}`)
-            exitCondition = true;
-          }
-        })
-      })
-      if (exitCondition) { return; }
 
       this.players[this.currentPlayerIndex].properties.push(property);
       this.players[this.currentPlayerIndex].wallet -= property.value;
@@ -179,7 +154,7 @@ export default {
         })
       })
       owner.wallet += property.rent_value;
-
+      this.players[this.currentPlayerIndex].shouldPayRent = false;
       PlayerService.updatePlayer(this.players[this.currentPlayerIndex]);
       PlayerService.updatePlayer(owner);
     });
@@ -193,6 +168,16 @@ export default {
         this.players[this.currentPlayerIndex].wallet += 200;
       }
       this.players[this.currentPlayerIndex].position = this.players[this.currentPlayerIndex].position % 36;
+
+      const propertyIndex = this.players[this.currentPlayerIndex].position; 
+      const propertyId = this.allProperties[propertyIndex]._id;
+      this.players.forEach( player => {
+        player.properties.forEach( property => {
+          if(property._id === propertyId && this.players[this.currentPlayerIndex]._id !== player._id) {
+              this.players[this.currentPlayerIndex].shouldPayRent = true;
+          }
+        })
+      })
     });
 
     eventBus.$on("player-bankruptcy", () => {

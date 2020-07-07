@@ -111,7 +111,8 @@ export default {
         wallet: 1500,
         properties: [],
         position: 0,
-        isInJail: false
+        isInJail: false,
+        shouldPayRent: false
       }).then(addedPlayer => {
         if (!addedPlayer) {
           alert("Try again, nerd.");
