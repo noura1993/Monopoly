@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
     <roll-dice v-if="shouldShowRollDice"/>
-    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" v-if="shouldShowTurnHandler"/>
+    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValue="diceValue" v-if="shouldShowTurnHandler"/>
     
     <div v-for="(player, thisIndex) in players" :key="thisIndex" :class="playerClass(thisIndex)">
       <player-info :players="players" :player="players[thisIndex]"/>
@@ -108,7 +108,7 @@ export default {
       this.shouldShowRollDice = true;
       this.shouldShowTurnHandler = false;
     });
-    
+
     eventBus.$on('buy-property', () => {  
       const propertyIndex = this.players[this.currentPlayerIndex].position; 
       const property = this.allProperties[propertyIndex];
@@ -156,14 +156,25 @@ export default {
       eventBusObject.playerToSellTo.wallet -= eventBusObject.sellValue;
       eventBusObject.playerToSellTo.properties.push(eventBusObject.propertyBeingSold);
       PlayerService.updatePlayer(eventBusObject.playerToSellTo);
-    })
+    });
     
     eventBus.$on("pay-rent", () => {
       const propertyIndex = this.players[this.currentPlayerIndex].position; 
+      const propertyID = this.allProperties[propertyIndex]._id;
       const property = this.allProperties[propertyIndex];
       this.players[this.currentPlayerIndex].wallet -= property.rent_value;
-      let owner = this.players.find( player => player.properties.includes(property));
+      let owner = null;
+      this.players.forEach((foundPlayer) => {
+        foundPlayer.properties.forEach((playerProperty) => {
+          if (playerProperty._id === propertyID) {
+            owner = foundPlayer;
+          }
+        })
+      })
       owner.wallet += property.rent_value;
+
+      PlayerService.updatePlayer(this.players[this.currentPlayerIndex].wallet);
+      PlayerService.updatePlayer(owner);
     });
  
     eventBus.$on("roll-dice", (rollDiceValue) => {
