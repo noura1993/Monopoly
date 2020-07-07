@@ -208,6 +208,12 @@ export default {
     eventBus.$on("put-in-jail", () => {
       this.players[this.currentPlayerIndex].position = 9;
       this.players[this.currentPlayerIndex].isInJail = true;
+
+      PlayerService.updatePlayer(this.players[this.currentPlayerIndex])
+        .then(() => {
+          PlayerService.getPlayers()
+            .then((players) => this.players = players);
+        })
     });
 
   }

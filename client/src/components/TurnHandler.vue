@@ -6,16 +6,8 @@
       <h3>Dice Result: {{diceValue}}</h3>
       <h3>Current Position: {{ properties[players[currentPlayerIndex].position].name }}</h3>
       <button class="turn-handler-btn" v-on:click="handleBuy" :disabled="isBuyDisabled">Buy</button>
-      <button
-        class="turn-handler-btn"
-        v-on:click="handleRent"
-        :disabled="isPayRentDisabled"
-      >Pay Rent</button>
-      <button
-        class="turn-handler-btn"
-        v-on:click="handleEndTurn"
-        :disabled="isEndTurnDisabled"
-      >End Turn</button>
+      <button class="turn-handler-btn" v-on:click="handleRent" :disabled="isPayRentDisabled">Pay Rent</button>
+      <button class="turn-handler-btn" v-on:click="handleEndTurn" :disabled="isEndTurnDisabled">End Turn</button>
       <button class="turn-handler-btn" v-on:click="handleBankruptcy">Declare Bankruptcy</button>
     </div>
   </div>
@@ -45,17 +37,9 @@ export default {
     },
     handleBankruptcy: function() {
       eventBus.$emit("player-bankruptcy");
-    }
-  },
-  mounted() {
-    if (this.players[this.currentPlayerIndex].position === 27) {
-      alert("Uhmmm ... kind of bad news?? You are going to jail!");
-      eventBus.$emit("put-in-jail");
-    }
-  },
-  computed: {
-    isBuyDisabled: function() {
-      if (this.players[this.currentPlayerIndex]) {
+    },
+    getBuyDisabled() {
+        if (this.players[this.currentPlayerIndex]) {
         const propertyIndex = this.players[this.currentPlayerIndex].position;
         const propertyId = this.properties[propertyIndex]._id;
         let propertyAlreadyOwned = false;
@@ -75,11 +59,25 @@ export default {
         return propertyAlreadyOwned;
       }
     },
+    getPayRentDisabled() {
+        return this.players[this.currentPlayerIndex] && this.players[this.currentPlayerIndex].shouldPayRent === false;
+    }
+  },
+  mounted() {
+    if (this.players[this.currentPlayerIndex].position === 27) {
+      alert("Uhmmm ... kind of bad news?? You are going to jail!");
+      eventBus.$emit("put-in-jail");
+    }
+  },
+  computed: {
+    isBuyDisabled: function() {
+        return this.getBuyDisabled();
+    },
     isPayRentDisabled: function() {
-      return (
-        this.players[this.currentPlayerIndex] &&
-        this.players[this.currentPlayerIndex].shouldPayRent === false
-      );
+        return this.getPayRentDisabled();
+    },
+    isEndTurnDisabled: function() {
+        return !this.getBuyDisabled() || !this.getPayRentDisabled();
     }
   }
 };
