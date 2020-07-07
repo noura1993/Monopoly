@@ -123,6 +123,9 @@ export default {
       this.shouldShowRollDice = false;
       this.shouldShowTurnHandler = true;
       this.players[this.currentPlayerIndex].position += rollDiceValue;
+      if(this.players[this.currentPlayerIndex].position >= 36) {
+        this.players[this.currentPlayerIndex].wallet += 200;
+      }
       this.players[this.currentPlayerIndex].position = this.players[this.currentPlayerIndex].position % 36;
     });
 
