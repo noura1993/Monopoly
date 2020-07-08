@@ -1,5 +1,6 @@
 <template>
   <div class="roll-dice-container">
+    <h3> Player: {{players[currentPlayerIndex].name}} </h3>
     <button class="dice-btn" v-on:click="rollDice" :disabled="isRollDiceDisabled" >Roll Dice</button>
     <button class="dice-btn" v-on:click="payFine" :disabled="isPayFineDisabled" >Pay Fine</button>
     <button class="dice-btn" v-on:click="declareBankruptcy">Declare Bankruptcy</button>
