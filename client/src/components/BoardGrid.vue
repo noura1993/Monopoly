@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
     <roll-dice v-if="shouldShowRollDice && players.length > 1" :players="players" :currentPlayerIndex="currentPlayerIndex"/>
-    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValue="diceValue" v-if="shouldShowTurnHandler && players.length > 1"/>
+    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValues="diceValues" v-if="shouldShowTurnHandler && players.length > 1"/>
     
     <div v-for="(player, thisIndex) in players" :key="thisIndex" :class="playerClass(thisIndex)">
       <player-info :players="players" :player="players[thisIndex]"/>
@@ -83,7 +83,7 @@ export default {
       shouldShowRollDice: true,
       shouldShowTurnHandler: false,
       currentPlayerIndex: 0,
-      diceValue: 0
+      diceValues: []
     }
   },
   components: {
@@ -170,11 +170,11 @@ export default {
       PlayerService.updatePlayer(owner);
     });
  
-    eventBus.$on("roll-dice", (rollDiceValue) => {
-      this.diceValue = rollDiceValue;
+    eventBus.$on("roll-dice", (diceValues) => {
+      this.diceValues = diceValues;
       this.shouldShowRollDice = false;
       this.shouldShowTurnHandler = true;
-      this.players[this.currentPlayerIndex].position += rollDiceValue;
+      this.players[this.currentPlayerIndex].position += (this.diceValues[0] + this.diceValues[1]);
       if(this.players[this.currentPlayerIndex].position >= 36) {
         this.players[this.currentPlayerIndex].wallet += 200;
       }
@@ -272,6 +272,7 @@ export default {
 
 .player {
   border: 1px solid black; 
+  border-radius: 15px; 
   text-align: left;
   font-size: 20px;
 }
@@ -301,7 +302,6 @@ export default {
   grid-row: 2;
   margin-left: 20px;
 }
-
 
 .board {
   display: grid;

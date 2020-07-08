@@ -1,6 +1,8 @@
 <template>
   <div class="player-info">
-    <div v-bind:style="{'background-color': player.colour }">{{player.name}}</div>
+    <div class="player-color" v-bind:style="{'background-color': player.colour }">{{player.name}}</div>
+    <br>
+    <div class="player-details">
       <div>Balance: {{player.wallet}}</div>
       <div>
         <p>Owned Properties:</p>
@@ -18,6 +20,7 @@
             </div>
           </form>
         </ul>
+        </div>
       </div>
   </div>
 </template>
@@ -64,5 +67,12 @@ export default {
 </script>
 
 <style>
+.player-color {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
 
+.player-details {
+  padding-left: 15px;
+}
 </style>
