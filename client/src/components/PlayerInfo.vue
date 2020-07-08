@@ -46,6 +46,10 @@ export default {
       },
 
       handleSubmit: function () {
+        if (this.playerToSellTo.wallet < this.sellValue) {
+          alert(`${this.playerToSellTo.name} does not have enough money to buy ${this.propertyBeingSold.name} from ${this.playerSelling.name}.`)
+          return;
+        }
         eventBus.$emit('player-sells-property', {
           'playerSelling': this.playerSelling,
           'playerToSellTo': this.playerToSellTo,
