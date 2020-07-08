@@ -1,5 +1,5 @@
 <template>
-  <div class="property-info" v-if="property">
+  <div class="property-info" :id="position" v-if="property">
     <div class="property-color" v-bind:style="{'background-color': property.colour }"></div>
       <div class="property-name">{{property.name}}</div>
       <div class="players-here">
@@ -24,19 +24,19 @@ export default {
         return "white";
       },
       secondPlayerColour: function() {
-        if(this.players[1] && this.players.length > 1 && this.players[1].position === this.position) {
+        if(this.players[1] && this.players[1].position === this.position) {
           return this.players[1].colour;
         }
         return "white";
       },
       thirdPlayerColour: function() {
-        if(this.players[2] && this.players.length > 2 && this.players[2].position === this.position) {
+        if(this.players[2] && this.players[2].position === this.position) {
           return this.players[2].colour;
         }
         return "white";
       },
       fourthPlayerColour: function() {
-        if(this.players[3] && this.players.length > 3 && this.players[3].position === this.position) {
+        if(this.players[3] && this.players[3].position === this.position) {
           return this.players[3].colour;
         }
         return "white";
