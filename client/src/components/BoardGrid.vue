@@ -15,7 +15,7 @@
 
     <div class="row top-row">
       <div class="cell top-property property-container" v-for="index in topArray" :key="index">
-          <property-info :property="allProperties[index]"/>
+          <property-info :position="index" :property="allProperties[index]" :players="players"/>
       </div>
     </div>
 
@@ -34,19 +34,19 @@
  
     <div class="column left-column">
         <div class="cell left-property property-container" v-for="index in leftArray" :key="index">
-        <property-info :property="allProperties[index]"/>
+        <property-info :position="index" :property="allProperties[index]" :players="players"/>
       </div>
     </div>
     <div class="center"></div>
     <div class="column right-column">
         <div class="cell right-property property-container" v-for="index in rightArray" :key="index">
-        <property-info :property="allProperties[index]"/>
+        <property-info :position="index" :property="allProperties[index]" :players="players"/>
       </div>
     </div>
  
     <div class="row bottom-row">
        <div class="cell bottom-property property-container" v-for="index in bottomArray" :key="index">
-        <property-info :property="allProperties[index]"/>
+        <property-info :position="index" :property="allProperties[index]" :players="players"/>
       </div>
     </div>
  
