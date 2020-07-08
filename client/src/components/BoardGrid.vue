@@ -10,7 +10,7 @@
     <div class="board">
         
       <div class="corner top-left-corner" v-for="index in freeParking" :key="index">
-        <img src="../assets/freeParking.png" width="140" height="150"/>
+        <corner-square :img="'freeParking.png'" :position="18" :players="players"/>
       </div>
 
     <div class="row top-row">
@@ -20,16 +20,17 @@
     </div>
 
     <div class="corner bottom-right-corner" v-for="index in go" :key="index">
-        <img src="../assets/go.gif" width="140" height="140"/>
+        <corner-square :img="'go.gif'" :position="0" :players="players"/>
       </div>
 
 
         <div class="corner top-right-corner" v-for="index in goToJail" :key="index">
-          <img src="../assets/goToJail.gif" width="140" height="140"/>
+          <corner-square :img="'goToJail.gif'" :position="27" :players="players"/>
       </div>
 
         <div class="corner bottom-left-corner" v-for="index in jail" :key="index">
-          <img src="../assets/inJail.gif" width="140" height="150"/>
+          <corner-square :img="'inJail.gif'" :position="9" :players="players"/>
+          
       </div>
  
     <div class="column left-column">
@@ -60,6 +61,7 @@ import RollDice from './RollDice';
 import TurnHandler from './TurnHandler';
 import PlayerInfo from './PlayerInfo';
 import PropertyInfo from './PropertyInfo';
+import CornerSquare from './CornerSquare';
 import { eventBus } from '@/main';
 
 export default {
@@ -86,7 +88,8 @@ export default {
     "roll-dice": RollDice,
     "turn-handler": TurnHandler,
     "player-info": PlayerInfo,
-    "property-info":PropertyInfo
+    "property-info": PropertyInfo,
+    "corner-square": CornerSquare
   },
   methods: {
     playerClass: function (thisPlayerIndex) {

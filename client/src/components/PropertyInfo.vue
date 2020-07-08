@@ -77,8 +77,4 @@ export default {
     padding-bottom: 10%;
 }
 
-.owned-by {
-  height: 15%;
-}
-
 </style>
