@@ -24,10 +24,10 @@
         <br>
       <select class="box" name="colour-field" id="colour" v-model="colour1">
         <option value="" disabled selected>Select a colour</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
-        <option value="yellow">Yellow</option>
+        <option value="#ff6699">Pink</option>
+        <option value="#009999">Mint</option>
+        <option value="#993366">Wine</option>
+        <option value="#ff0000">Red</option>
       </select>
       </div>
       <div class="player2">
@@ -36,10 +36,10 @@
         <br>
       <select class="box" name="colour-field" id="colour" v-model="colour2">
         <option value="" disabled selected>Select a colour</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
-        <option value="yellow">Yellow</option>
+        <option value="#ff6699">Pink</option>
+        <option value="#009999">Mint</option>
+        <option value="#993366">Wine</option>
+        <option value="#ff0000">Red</option>
       </select>
       </div>
       </div>
@@ -50,10 +50,10 @@
         <br>
       <select class="box" name="colour-field" id="colour" v-model="colour3">
         <option value="" disabled selected>Select a colour</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
-        <option value="yellow">Yellow</option>
+        <option value="#ff6699">Pink</option>
+        <option value="#009999">Mint</option>
+        <option value="#993366">Wine</option>
+        <option value="#ff0000">Red</option>
       </select>
       </div>
       <div class="player4" v-if="this.numOfPlayers === '4'">
@@ -62,10 +62,10 @@
         <br>
       <select class="box" name="colour-field" id="colour" v-model="colour4">
         <option value="" disabled selected>Select a colour</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
-        <option value="yellow">Yellow</option>
+        <option value="#ff6699">Pink</option>
+        <option value="#009999">Mint</option>
+        <option value="#993366">Wine</option>
+        <option value="#ff0000">Red</option>
       </select>
       </div>
     </div>

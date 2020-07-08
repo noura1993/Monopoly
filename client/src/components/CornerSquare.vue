@@ -1,6 +1,6 @@
 <template>
   <div class="corner-players-here">
-    <img :src="require('../assets/' + img)" width="130" height="130" />
+    <img :src="require('../assets/' + img)" width="140" height="130" />
     <div class="corner-player-here" v-bind:style="{'background-color': firstPlayerColour }"></div>
     <div class="corner-player-here" v-bind:style="{'background-color': secondPlayerColour }"></div>
     <div class="corner-player-here" v-bind:style="{'background-color': thirdPlayerColour }"></div>
@@ -44,7 +44,6 @@ export default {
 <style>
 
 .corner-players-here {
-    margin-left: 5%;
     height: 100%;
     width: 100%;
 }
