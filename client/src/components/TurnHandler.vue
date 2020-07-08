@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="turn-handler-container">
       <h2>Player: {{players[currentPlayerIndex].name}}</h2>
       <hr class="turn-handler-hr" />
       <h3>Dice Result: {{diceValue}}</h3>
@@ -51,7 +52,8 @@ export default {
         });
 
         // Can not buy corner squares
-        if (propertyIndex === 0 || propertyIndex === 9 || propertyIndex === 18 || propertyIndex === 27) {
+        if (propertyIndex === 0 || propertyIndex === 9 || propertyIndex === 18 || propertyIndex === 27 || propertyIndex === 10
+        || propertyIndex === 35 || propertyIndex === 31 || propertyIndex === 26 || propertyIndex === 33) {
             return true;
         }
 
@@ -66,6 +68,28 @@ export default {
     if (this.players[this.currentPlayerIndex].position === 27) {
       alert("Uhmmm ... kind of bad news?? You are going to jail!");
       eventBus.$emit("put-in-jail");
+    }
+
+    if(this.players[this.currentPlayerIndex].position === 31) {
+      alert("Oooft, bad luck. Pay £200 for Luxury Tax.")
+      eventBus.$emit("tax")
+    };
+
+    if(this.players[this.currentPlayerIndex].position === 10) {
+      eventBus.$emit("wisdom")
+    };
+
+    if(this.players[this.currentPlayerIndex].position === 35) {
+      eventBus.$emit("wisdom2")
+    };
+
+    if(this.players[this.currentPlayerIndex].position === 26) {
+      alert("Congratulation, you won £50 in a beauty contest");
+      eventBus.$emit("chest1")
+    }
+    if(this.players[this.currentPlayerIndex].position === 33) {
+      alert("You've been caught speeding, pay £50 fine");
+      eventBus.$emit("chest2")
     }
   },
   computed: {

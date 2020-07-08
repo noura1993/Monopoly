@@ -43,9 +43,10 @@ export default {
         if (players.length > 0) {
           this.showForm = false;
           this.showBoardGrid = true;
-        } else {
-          alert("Can't really start a game without any players, or can we?");
-        }
+        } 
+        // else {
+        //   alert("Can't really start a game without any players, or can we?");
+        // }
         this.players = players
       })
     })

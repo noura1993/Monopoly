@@ -10,49 +10,49 @@ db.properties.insertMany([
     },
     {
         "name": "Ahmed Station",
-        "colour": "#cc6600",
+        "colour": "red",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Nourhan Station",
-        "colour": "#cc6600",
+        "colour": "red",
         "value": 60,
         "rent_value": 6
     },
     {
         "name": "Ronan Station",
-        "colour": "#cc6600",
+        "colour": "red",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Fady Station",
-        "colour": "#cc6600",
+        "colour": "red",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Ollie Street",
-        "colour": "#99ccff",
+        "colour": "yellow",
         "value": 50,
         "rent_value": 10
     },
     {
         "name": "Keith Street",
-        "colour": "#99ccff",
+        "colour": "yellow",
         "value": 50,
         "rent_value": 10
     },    
     {
         "name": "Sara Street",
-        "colour": "#99ccff",
+        "colour": "yellow",
         "value": 50,
         "rent_value": 10
     },    
     {
         "name": "Ed Street",
-        "colour": "#99ccff",
+        "colour": "green",
         "value": 50,
         "rent_value": 10
     },
@@ -63,50 +63,50 @@ db.properties.insertMany([
         "rent_value": 0
     },
     {
-        "name": "Alex Chance Cards",
-        "colour": "#ff3399",
+        "name": "Alex Wisdom Cards",
+        "colour": "",
         "value": 0,
         "rent_value": 0
     },
     {
         "name": "Adam Street",
-        "colour": "#ff3399",
+        "colour": "green",
         "value": 50,
         "rent_value": 10
     },
     {
         "name": "Rumen Street",
-        "colour": "#ff3399",
+        "colour": "blue",
         "value": 50,
         "rent_value": 10
     },
     {
         "name": "Craig Street",
-        "colour": "#ff3399",
+        "colour": "blue",
         "value": 50,
         "rent_value": 10
     },
     {
         "name": "Johns Nice Street",
-        "colour": "#ff9900",
+        "colour": "blue",
         "value": 50,
         "rent value": 5
     },
     {
         "name": "Louise Believes In You",
-        "colour": "#ff9900",
+        "colour": "purple",
         "value": 50,
         "rent_value": 0
     },
     {
         "name": "Harrison Folks Street",
-        "colour": "#ff9900",
+        "colour": "purple",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Mari Street",
-        "colour": "#ff9900",
+        "colour": "purple",
         "value": 50,
         "rent_value": 5
     },
@@ -118,51 +118,51 @@ db.properties.insertMany([
     },
     {
         "name": "Janey Street",
-        "colour": "#cc2900",
+        "colour": "orange",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Eugene Street",
-        "colour": "#cc2900",
+        "colour": "orange",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Maria Street",
-        "colour": "#cc2900",
+        "colour": "orange",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Morag Street",
-        "colour": "#cc2900",
+        "colour": "pink",
         "value": 50,
         "rent_value": 5
     },
     {
-        "name": "Castle Terrace",
-        "colour": "#ffff00",
+        "name": "Leith Toy Hospital",
+        "colour": "pink",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Princes Street",
-        "colour": "#ffff00",
+        "colour": "pink",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "The Royal Mile",
-        "colour": "#ffff00",
+        "colour": "black",
         "value": 50,
         "rent_value": 5
     },
     {
-        "name": "Leith",
-        "colour": "#ffff00",
-        "value": 50,
-        "rent_value": 5
+        "name": "Community Chest",
+        "colour": "",
+        "value": 0,
+        "rent_value": 0
     },
     {
         "name": "Go To Jail",
@@ -172,64 +172,56 @@ db.properties.insertMany([
     },
     {
         "name": "Granton",
-        "colour": "#33cc33",
+        "colour": "black",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Waverley",
-        "colour": "#33cc33",
+        "colour": "grey",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Haymarket",
-        "colour": "#33cc33",
+        "colour": "grey",
         "value": 50,
         "rent_value": 5
     },
     {
-        "name": "The Meadows",
-        "colour": "#33cc33",
-        "value": 50,
-        "rent_value": 5
+        "name": "Luxury Tax",
+        "colour": "grey",
+        "value": 0,
+        "rent_value": 0
     },
     {
         "name": "Arthurs Seat",
-        "colour": "#333399",
+        "colour": "navy",
         "value": 50,
         "rent_value": 5
     },
     {
-        "name": "Calton Hill",
-        "colour": "#333399",
-        "value": 50,
-        "rent_value": 5
+        "name": "Community Chest",
+        "colour": "",
+        "value": 0,
+        "rent_value": 0
     },
     {
         "name": "Corstorphine Hill",
-        "colour": "#333399",
+        "colour": "navy",
         "value": 50,
         "rent_value": 5
     },
     {
-        "name": "Vue Lane",
-        "colour": "#333399",
-        "value": 50,
-        "rent_value": 5
+        "name": "Alex Wisdom Cards",
+        "colour": "",
+        "value": 0,
+        "rent_value": 0
     }
-    // {
-    //     "name": "JavaScript Hill",
-    //     "colour": "brown",
-    //     "value": 50,
-    //     "rent_value": 5
-    // }
 ]);
 
 db.createCollection("players");
 
-use changeCards;
-db.dropDatabase()
 
 db.chanceCards.insertMany([
     {

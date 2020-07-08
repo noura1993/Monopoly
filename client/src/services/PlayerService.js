@@ -1,5 +1,5 @@
 const basePropertiesURL = 'http://localhost:3000/api/properties/';
-
+const baseQuotesURL = 'http://localhost:3000/api/chanceCards/';
 const basePlayersURL = 'http://localhost:3000/api/players/';
 
 export default {
@@ -10,6 +10,11 @@ export default {
 
     getPlayers() {
         return fetch(basePlayersURL)
+        .then(res => res.json())
+    },
+
+    getQuotes() {
+        return fetch(baseQuotesURL)
         .then(res => res.json())
     },
 

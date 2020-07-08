@@ -19,10 +19,13 @@ MongoClient.connect(databaseURL)
         const db = client.db('monopoly');
         const propertiesCollection = db.collection('properties');
         const playersCollection = db.collection('players');
+        const chanceCardCollection = db.collection('chanceCards');
         const propertiesRouter = createRouter(propertiesCollection);
+        const chanceCardsRouter = createRouter(chanceCardCollection);
         const playersRouter = createRouter(playersCollection);
         app.use('/api/properties', propertiesRouter);
         app.use('/api/players', playersRouter);
+        app.use('/api/chanceCards', chanceCardsRouter);
     })
     .catch(console.error);
 

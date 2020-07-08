@@ -69,6 +69,7 @@ export default {
   name: "board-grid",
   data() {
     return {
+      quotes: [],
       players: [],
       allProperties: [],
       go: [0],
@@ -98,6 +99,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.quotes);
     PlayerService.getProperties()
       .then((properties) => {
         this.allProperties = properties;
@@ -106,6 +108,11 @@ export default {
     PlayerService.getPlayers()
     .then(result => {
       this.players = result;
+    });
+
+    PlayerService.getQuotes()
+    .then((quotes) => {
+      this.quotes = quotes;
     });
 
     eventBus.$on('next-player', () => {
@@ -218,6 +225,35 @@ export default {
           PlayerService.getPlayers()
             .then((players) => this.players = players);
         })
+    });
+
+    eventBus.$on("tax", () => {
+      this.players[this.currentPlayerIndex].wallet -= 200;
+    });
+
+    eventBus.$on("chest1", () => {
+      this.players[this.currentPlayerIndex].wallet += 50;
+    });
+
+    eventBus.$on("chest2", () => {
+      this.players[this.currentPlayerIndex].wallet -= 50;
+    });
+
+    eventBus.$on("wisdom", () => {
+      const randomNum = getRandomInt(14);
+      const quote = this.quotes[randomNum].quote;
+      alert (quote);
+    });
+
+    eventBus.$on("wisdom2", () => {
+      const randomNum = getRandomInt(14);
+      const quote2 = this.quotes[randomNum].quote;
+      alert (quote2);
+      // if (confirm("Are you ready for the wisdom of Baz?")) {
+      //     txt = quote;
+      // } else {
+      //   txt = "You fool!";
+      // }
     });
 
   }
