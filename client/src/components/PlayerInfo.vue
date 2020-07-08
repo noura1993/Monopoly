@@ -3,7 +3,7 @@
     <div class="player-color" v-bind:style="{'background-color': player.colour }">{{player.name}}</div>
     <br>
     <div class="player-details">
-      <div>Balance: {{player.wallet}}</div>
+      <div>Balance: £{{player.wallet}}</div>
       <div>
         <p>Owned Properties:</p>
         <ul>
