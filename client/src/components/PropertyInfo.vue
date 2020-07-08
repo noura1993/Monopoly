@@ -8,7 +8,7 @@
         <div class="player-here" v-bind:style="{'background-color': thirdPlayerColour }"></div>
         <div class="player-here" v-bind:style="{'background-color': fourthPlayerColour }"></div>
       </div>
-      <div class="property-price" >Price: £{{property.value}}</div>
+      <div v-if="property.value > 0" class="property-price" >Price: £{{property.value}}</div>
   </div>
 </template>
 

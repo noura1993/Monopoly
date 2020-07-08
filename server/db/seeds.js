@@ -10,49 +10,49 @@ db.properties.insertMany([
     },
     {
         "name": "Ahmed Station",
-        "colour": "red",
+        "colour": "#CC6600",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Nourhan Station",
-        "colour": "red",
+        "colour": "#CC6600",
         "value": 60,
         "rent_value": 6
     },
     {
         "name": "Ronan Station",
-        "colour": "red",
+        "colour": "#CC6600",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Fady Station",
-        "colour": "red",
+        "colour": "#CC6600",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Ollie Street",
-        "colour": "yellow",
+        "colour": "#99CCFF",
         "value": 50,
         "rent_value": 10
     },
     {
         "name": "Keith Street",
-        "colour": "yellow",
+        "colour": "#99CCFF",
         "value": 50,
         "rent_value": 10
     },    
     {
         "name": "Sara Street",
-        "colour": "yellow",
+        "colour": "#99CCFF",
         "value": 50,
         "rent_value": 10
     },    
     {
         "name": "Ed Street",
-        "colour": "green",
+        "colour": "#99CCFF",
         "value": 50,
         "rent_value": 10
     },
@@ -70,43 +70,43 @@ db.properties.insertMany([
     },
     {
         "name": "Adam Street",
-        "colour": "green",
+        "colour": "#FF3399",
         "value": 50,
         "rent_value": 10
     },
     {
         "name": "Rumen Street",
-        "colour": "blue",
+        "colour": "#FF3399",
         "value": 50,
         "rent_value": 10
     },
     {
         "name": "Craig Street",
-        "colour": "blue",
+        "colour": "#FF3399",
         "value": 50,
         "rent_value": 10
     },
     {
         "name": "Johns Nice Street",
-        "colour": "blue",
+        "colour": "#FF9900",
         "value": 50,
         "rent value": 5
     },
     {
         "name": "Louise Believes In You",
-        "colour": "purple",
+        "colour": "#FF9900",
         "value": 50,
         "rent_value": 0
     },
     {
         "name": "Harrison Folks Street",
-        "colour": "purple",
+        "colour": "#FF9900",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Mari Street",
-        "colour": "purple",
+        "colour": "#FF9900",
         "value": 50,
         "rent_value": 5
     },
@@ -118,43 +118,43 @@ db.properties.insertMany([
     },
     {
         "name": "Janey Street",
-        "colour": "orange",
+        "colour": "#CC2900",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Eugene Street",
-        "colour": "orange",
+        "colour": "#CC2900",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Maria Street",
-        "colour": "orange",
+        "colour": "#CC2900",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Morag Street",
-        "colour": "pink",
+        "colour": "#CC2900",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Leith Toy Hospital",
-        "colour": "pink",
+        "colour": "#FFFF00",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Princes Street",
-        "colour": "pink",
+        "colour": "#FFFF00",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "The Royal Mile",
-        "colour": "black",
+        "colour": "#FFFF00",
         "value": 50,
         "rent_value": 5
     },
@@ -172,31 +172,31 @@ db.properties.insertMany([
     },
     {
         "name": "Granton",
-        "colour": "black",
+        "colour": "#33CC33",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Waverley",
-        "colour": "grey",
+        "colour": "#33CC33",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Haymarket",
-        "colour": "grey",
+        "colour": "#33CC33",
         "value": 50,
         "rent_value": 5
     },
     {
         "name": "Luxury Tax",
-        "colour": "grey",
+        "colour": "",
         "value": 0,
         "rent_value": 0
     },
     {
         "name": "Arthurs Seat",
-        "colour": "navy",
+        "colour": "#333399",
         "value": 50,
         "rent_value": 5
     },
@@ -208,7 +208,7 @@ db.properties.insertMany([
     },
     {
         "name": "Corstorphine Hill",
-        "colour": "navy",
+        "colour": "#333399",
         "value": 50,
         "rent_value": 5
     },

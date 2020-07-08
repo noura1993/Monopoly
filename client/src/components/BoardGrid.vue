@@ -99,7 +99,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.quotes);
+    
     PlayerService.getProperties()
       .then((properties) => {
         this.allProperties = properties;
@@ -240,17 +240,17 @@ export default {
     });
 
     eventBus.$on("wisdom", () => {
-      const randomNum = getRandomInt(14);
+      const randomNum = Math.floor(Math.random() * 14) + 1;
       const quote = this.quotes[randomNum].quote;
       alert (quote);
     });
 
     eventBus.$on("wisdom2", () => {
-      const randomNum = getRandomInt(14);
+      const randomNum = Math.floor(Math.random() * 14) + 1;
       const quote2 = this.quotes[randomNum].quote;
       alert (quote2);
       // if (confirm("Are you ready for the wisdom of Baz?")) {
-      //     txt = quote;
+      //     let txt = quote2;
       // } else {
       //   txt = "You fool!";
       // }
