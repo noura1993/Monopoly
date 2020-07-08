@@ -8,7 +8,7 @@
           <li :player="player" v-for="property in player.properties" :key="property._id">{{property.name}} <a v-if="!dropdownCondition" v-on:click="handleSell(property, player)" href="#">Sell</a></li>
           <form v-if="dropdownCondition" v-on:submit.prevent="handleSubmit">
             <select v-model="playerToSellTo">
-              <option selected="true" disabled="disabled">Selling {{propertyBeingSold.name}}</option> 
+              <option selected="true" disabled="disabled">Sell to...</option> 
               <option v-if="otherPlayer !== player" v-for="(otherPlayer, index) in players" :value="otherPlayer" :key="index">{{otherPlayer.name}}</option>
             </select>
             <input type="number" v-model.number="sellValue" placeholder="Sell value...">
