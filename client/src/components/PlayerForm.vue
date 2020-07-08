@@ -24,7 +24,7 @@
         <br>
       <select class="box" name="colour-field" id="colour" v-model="colour1">
         <option value="" disabled selected>Select a colour</option>
-        <option value="#ff6699">Pink</option>
+        <option value="#f50057">Pink</option>
         <option value="#009999">Mint</option>
         <option value="#993366">Wine</option>
         <option value="#ff0000">Red</option>
@@ -36,7 +36,7 @@
         <br>
       <select class="box" name="colour-field" id="colour" v-model="colour2">
         <option value="" disabled selected>Select a colour</option>
-        <option value="#ff6699">Pink</option>
+        <option value="#f50057">Pink</option>
         <option value="#009999">Mint</option>
         <option value="#993366">Wine</option>
         <option value="#ff0000">Red</option>
@@ -50,7 +50,7 @@
         <br>
       <select class="box" name="colour-field" id="colour" v-model="colour3">
         <option value="" disabled selected>Select a colour</option>
-        <option value="#ff6699">Pink</option>
+        <option value="#f50057">Pink</option>
         <option value="#009999">Mint</option>
         <option value="#993366">Wine</option>
         <option value="#ff0000">Red</option>
@@ -62,7 +62,7 @@
         <br>
       <select class="box" name="colour-field" id="colour" v-model="colour4">
         <option value="" disabled selected>Select a colour</option>
-        <option value="#ff6699">Pink</option>
+        <option value="#f50057">Pink</option>
         <option value="#009999">Mint</option>
         <option value="#993366">Wine</option>
         <option value="#ff0000">Red</option>
