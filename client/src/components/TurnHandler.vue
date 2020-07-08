@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="turn-handler-container">
       <h2>Player: {{players[currentPlayerIndex].name}}</h2>
       <hr class="turn-handler-hr" />
       <h3>Dice Result: {{diceValue}}</h3>

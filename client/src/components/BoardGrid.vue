@@ -1,7 +1,7 @@
 <template>
   <div class="board-wrapper">
-    <roll-dice v-if="shouldShowRollDice" :players="players" :currentPlayerIndex="currentPlayerIndex"/>
-    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValue="diceValue" v-if="shouldShowTurnHandler"/>
+    <roll-dice v-if="shouldShowRollDice && players.length > 1" :players="players" :currentPlayerIndex="currentPlayerIndex"/>
+    <turn-handler :properties="allProperties" :players="players" :currentPlayerIndex="currentPlayerIndex" :diceValue="diceValue" v-if="shouldShowTurnHandler && players.length > 1"/>
     
     <div v-for="(player, thisIndex) in players" :key="thisIndex" :class="playerClass(thisIndex)">
       <player-info :players="players" :player="players[thisIndex]"/>
@@ -38,7 +38,8 @@
         <property-info :position="index" :property="allProperties[index]" :players="players"/>
       </div>
     </div>
-    <div class="center"></div>
+    <div class="center" :style="[players.length === 1 ? {'background-image': 'url(' + require('../assets/fireworks.gif') + ') '}: {'background-image': ''}]"> 
+    </div>
     <div class="column right-column">
         <div class="cell right-property property-container" v-for="index in rightArray" :key="index">
         <property-info :position="index" :property="allProperties[index]" :players="players"/>
@@ -318,6 +319,9 @@ export default {
   grid-row: 2/10;
   background: white;
   border: 1px solid black;
+  background-repeat: no-repeat;  
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .right-column {

@@ -1,7 +1,6 @@
 <template>
   <div class="player-info">
     <div v-bind:style="{'background-color': player.colour }">{{player.name}}</div>
-      <div>Colour: {{player.colour}}</div>
       <div>Balance: {{player.wallet}}</div>
       <div>
         <p>Owned Properties:</p>
