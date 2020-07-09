@@ -249,11 +249,6 @@ export default {
       const randomNum = Math.floor(Math.random() * 14) + 1;
       const quote2 = this.quotes[randomNum].quote;
       alert (quote2);
-      // if (confirm("Are you ready for the wisdom of Baz?")) {
-      //     let txt = quote2;
-      // } else {
-      //   txt = "You fool!";
-      // }
     });
 
   }

@@ -16,10 +16,8 @@ export default {
     props: ["players", "currentPlayerIndex"],
     methods: {
         rollDice: function() {
-          // const rollDiceValue = 27;
-            const rollDice1 = Math.floor(Math.random() * 5) + 1;
-            const rollDice2 = Math.floor(Math.random() * 5) + 1;
-            // const rollDiceValue = rollDice1 + rollDice2;
+            const rollDice1 = Math.floor(Math.random() * 6) + 1;
+            const rollDice2 = Math.floor(Math.random() * 6) + 1;
             eventBus.$emit("roll-dice", [rollDice1, rollDice2]);
         },
         declareBankruptcy: function () {
