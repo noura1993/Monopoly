@@ -1,8 +1,8 @@
 # JS Group Project - Monopoly CodeClan Edition
 
 ## Learning Objectives
-General consolidation and CSS Practice
-Git branching and merging
+* General consolidation and CSS Practice
+* Git branching and merging
 ---
 ## MVP
 * Each player should have a minimum wallet amount (e.g. £1500?)
