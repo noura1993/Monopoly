@@ -20,3 +20,6 @@
 * Chance Cards with functionality more like Monopoly game (i.e. pay other players)
 * When a player goes to jail they have to pay £50 to get out
 * Chance Cards with Quotes from https://themindofbaz.co.uk/
+---
+## Web App
+![homepage_screenshot](/client/public/homepage_screenshot.png?raw=true "Homepage Screenshot")
