@@ -1,5 +1,9 @@
 # JS Group Project - Monopoly CodeClan Edition
 
+[Watch a demo video](https://streamable.com/geovfq)
+
+[![Watch the video](https://i.imgur.com/h6Wzo5t.png)](https://streamable.com/geovfq)
+
 ## Learning Objectives
 * General consolidation and CSS Practice
 * Git branching and merging
